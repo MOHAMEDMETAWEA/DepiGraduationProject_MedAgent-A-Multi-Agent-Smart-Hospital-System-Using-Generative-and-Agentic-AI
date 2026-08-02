@@ -1,0 +1,55 @@
+# Phase F — F1: production frontend image.
+# Multi-stage: deps → build → runtime. Runtime is `next start` (Node-based)
+# rather than `output: standalone` so we don't have to edit next.config.ts.
+
+# ── Deps ───────────────────────────────────────────────────
+FROM node:22-alpine AS deps
+
+WORKDIR /app
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml* ./
+COPY frontend/package.json ./frontend/package.json
+RUN pnpm install --frozen-lockfile --filter=frontend
+
+# ── Builder ────────────────────────────────────────────────
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/frontend/node_modules ./frontend/node_modules
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml* ./
+COPY frontend/ ./frontend/
+
+WORKDIR /app/frontend
+RUN pnpm build
+
+# ── Runtime ────────────────────────────────────────────────
+FROM node:22-alpine AS runtime
+
+WORKDIR /app/frontend
+
+RUN corepack enable && corepack prepare pnpm@latest --activate \
+    && addgroup -S medagent && adduser -S medagent -G medagent
+
+# Copy just what `next start` needs.
+COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/frontend/node_modules ./node_modules
+COPY --from=builder /app/frontend/.next ./.next
+COPY --from=builder /app/frontend/public ./public
+COPY --from=builder /app/frontend/package.json ./package.json
+COPY --from=builder /app/frontend/next.config.ts ./next.config.ts
+
+ENV NODE_ENV=production \
+    PORT=3000 \
+    HOSTNAME=0.0.0.0
+
+USER medagent
+
+EXPOSE 3000
+
+CMD ["pnpm", "start"]

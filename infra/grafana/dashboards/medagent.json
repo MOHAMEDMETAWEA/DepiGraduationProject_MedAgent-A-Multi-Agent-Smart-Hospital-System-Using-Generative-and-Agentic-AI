@@ -1,0 +1,144 @@
+{
+  "title": "MedAgent — Overview",
+  "uid": "medagent-overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "tags": ["medagent"],
+  "timezone": "browser",
+  "refresh": "30s",
+  "time": { "from": "now-1h", "to": "now" },
+  "templating": {
+    "list": [
+      {
+        "name": "datasource",
+        "type": "datasource",
+        "query": "prometheus",
+        "current": { "selected": false, "text": "Prometheus", "value": "Prometheus" }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "HTTP requests / sec",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(medagent_http_requests_total[1m])) by (method)",
+          "legendFormat": "{{method}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "HTTP p95 latency by route",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(medagent_http_request_duration_seconds_bucket[5m])) by (le, path))",
+          "legendFormat": "{{path}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "s" } }
+    },
+    {
+      "id": 3,
+      "title": "HTTP error rate (5xx)",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(medagent_http_requests_total{status=~\"5..\"}[5m]))",
+          "legendFormat": "5xx/sec"
+        },
+        {
+          "expr": "sum(rate(medagent_http_requests_total{status=~\"4..\"}[5m]))",
+          "legendFormat": "4xx/sec"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Handoff status transitions",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "targets": [
+        {
+          "expr": "sum(rate(medagent_handoff_transitions_total[5m])) by (to_status)",
+          "legendFormat": "→ {{to_status}}"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Triage level distribution",
+      "type": "piechart",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 16 },
+      "targets": [
+        {
+          "expr": "sum(rate(medagent_triage_level_total[1h])) by (level)",
+          "legendFormat": "{{level}}"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "LLM tokens / 5 min",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 16 },
+      "targets": [
+        {
+          "expr": "sum(increase(medagent_llm_tokens_total[5m])) by (model, kind)",
+          "legendFormat": "{{model}} · {{kind}}"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Safety gate blocks",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 16 },
+      "targets": [
+        {
+          "expr": "sum(rate(medagent_red_flags_total[5m])) by (severity)",
+          "legendFormat": "{{severity}}"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Tool calls (1h)",
+      "type": "bargauge",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "targets": [
+        {
+          "expr": "sum(increase(medagent_tool_calls_total[1h])) by (tool)",
+          "legendFormat": "{{tool}}"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Active conversations",
+      "type": "stat",
+      "datasource": { "type": "prometheus", "uid": "${datasource}" },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+      "targets": [
+        {
+          "expr": "medagent_active_conversations",
+          "legendFormat": "active"
+        }
+      ]
+    }
+  ]
+}

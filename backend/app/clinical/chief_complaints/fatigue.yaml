@@ -1,0 +1,135 @@
+id: fatigue
+name: {ar: "الإرهاق المزمن", en: "Fatigue"}
+category: general
+age_range: adult
+
+synonyms:
+  - fatigue
+  - tiredness
+  - exhaustion
+  - low energy
+  - lethargy
+  - إرهاق
+  - تعب
+  - ضعف عام
+  - خمول
+  - إعياء
+
+red_flags:
+  - question:
+      ar: هل في فقدان وزن غير مبرّر (>٥٪ في ٦ أشهر) أو تعرّق ليلي غزير؟
+      en: Unexplained weight loss (>5% in 6 months) or drenching night sweats?
+    severity: urgent
+    rationale: Malignancy / chronic infection screen.
+  - question:
+      ar: هل في ضيق نفس مع المجهود البسيط أو ألم صدر؟
+      en: Dyspnea on mild exertion or chest pain?
+    severity: urgent
+    rationale: Anemia / heart failure / cardiac cause.
+  - question:
+      ar: هل عندك حمى مستمرة أو غدد ليمفاوية متضخّمة؟
+      en: Persistent fever or lymphadenopathy?
+    severity: urgent
+    rationale: Infection / hematological malignancy.
+
+differentials:
+  - name: {ar: "قلة نوم / نمط حياة سيء", en: "Sleep deprivation / lifestyle"}
+    likelihood: very_common
+    key_features:
+      - {ar: "نوم أقل من ٧ ساعات", en: "Sleep <7 h"}
+      - {ar: "ضغط نفسي عالي", en: "High stress"}
+      - {ar: "قلة نشاط بدني", en: "Sedentary"}
+    icd10: G47
+  - name: {ar: "اكتئاب أو قلق", en: "Depression / anxiety"}
+    likelihood: common
+    key_features:
+      - {ar: "مزاج منخفض / فقدان متعة", en: "Low mood / anhedonia"}
+      - {ar: "قلق مستمر / صعوبة تركيز", en: "Persistent worry / poor concentration"}
+    icd10: F32/F41
+  - name: {ar: "أنيميا (نقص حديد بالذات)", en: "Anemia (iron deficiency)"}
+    likelihood: common
+    key_features:
+      - {ar: "شحوب + خفقان + ضيق نفس مع المجهود", en: "Pallor + palpitations + exertional dyspnea"}
+      - {ar: "حيض غزير عند النساء", en: "Heavy menses in women"}
+    icd10: D50
+  - name: {ar: "قصور الغدة الدرقية", en: "Hypothyroidism"}
+    likelihood: common
+    key_features:
+      - {ar: "زيادة وزن + برودة + جفاف جلد + إمساك", en: "Weight gain + cold intolerance + dry skin + constipation"}
+      - {ar: "امرأة فوق ٤٠ أعلى احتمالاً", en: "Women >40 higher risk"}
+    icd10: E03
+  - name: {ar: "داء السكري غير مشخّص", en: "Undiagnosed diabetes"}
+    likelihood: common
+    key_features:
+      - {ar: "عطش زائد + كثرة تبوّل + فقدان وزن", en: "Polydipsia + polyuria + weight loss"}
+    icd10: E11
+  - name: {ar: "نقص فيتامين د / B12", en: "Vitamin D / B12 deficiency"}
+    likelihood: common
+    key_features:
+      - {ar: "إرهاق + ألم عضلي + قلة تركيز", en: "Fatigue + myalgia + poor concentration"}
+    icd10: E55/E53.8
+
+followup_questions:
+  - field_id: duration
+    question: {ar: "من إمتى الإرهاق؟ مفاجئ ولا تدريجي؟", en: "How long? Sudden or gradual?"}
+    relevance: always
+  - field_id: sleep
+    question: {ar: "بتنام كام ساعة؟ نوم مستمر؟", en: "Sleep duration? Quality?"}
+    relevance: always
+  - field_id: mood
+    question: {ar: "مزاجك ايه؟ في حاجة فقدت متعتها مؤخراً؟", en: "Mood? Loss of interest in usual activities?"}
+    relevance: always
+  - field_id: weight_change
+    question: {ar: "في تغيّر في الوزن؟ كم تقريباً وعلى مدى ايه؟", en: "Weight change? How much, over what period?"}
+    relevance: if_no_red_flag
+  - field_id: menstrual
+    question: {ar: "لو سيدة — الحيض منتظم وغير غزير؟", en: "If female — menses regular and not heavy?"}
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: ""
+    instruction:
+      ar: نوم منتظم ٧-٨ ساعات بنفس مواعيد كل يوم. اطفاء الشاشات قبل النوم بساعة. غرفة باردة ومظلمة.
+      en: Consistent 7-8 h sleep at same times daily. No screens 1h before bed. Cool, dark room.
+    duration: 4 weeks behavior change
+  - drug_id: ""
+    instruction:
+      ar: نشاط بدني ٣٠ دقيقة ٥ مرات أسبوعيًا (مشي سريع كافي). يحسّن الطاقة بعد ٢-٣ أسابيع.
+      en: 30 min activity 5x/week (brisk walk sufficient). Improves energy after 2-3 weeks.
+    duration: ongoing
+  - drug_id: ""
+    instruction:
+      ar: تقليل الكافيين بعد الظهر. شرب ٢-٣ لتر مياه يوميًا. تجنّب وجبات ثقيلة قبل النوم.
+      en: Reduce afternoon caffeine. 2-3 L water/day. Avoid heavy meals before bed.
+    duration: ongoing
+  - drug_id: ""
+    instruction:
+      ar: تقييم الضغط النفسي — تقنيات تنفس / تأمل / محادثة مع مختص لو الضغط مستمر.
+      en: Stress assessment — breathing/meditation/counseling if persistent.
+    duration: ongoing
+
+workup:
+  - name: {ar: "تعداد دم كامل + حديد + فيريتين", en: "CBC + iron studies + ferritin"}
+    indication: {ar: "لاستبعاد أنيميا", en: "Rule out anemia"}
+    priority: routine
+  - name: {ar: "TSH (وظائف غدة درقية)", en: "TSH (thyroid function)"}
+    indication: {ar: "لاستبعاد قصور درقية", en: "Rule out hypothyroidism"}
+    priority: routine
+  - name: {ar: "سكر صائم + HbA1c", en: "Fasting glucose + HbA1c"}
+    indication: {ar: "لاستبعاد سكري", en: "Rule out diabetes"}
+    priority: routine
+  - name: {ar: "فيتامين د + B12", en: "Vitamin D + B12"}
+    indication: {ar: "في حالة استمرار الإرهاق", en: "If fatigue persists"}
+    priority: routine
+
+when_to_escalate:
+  - {ar: "فقدان وزن غير مبرّر", en: "Unexplained weight loss"}
+  - {ar: "ضيق نفس مع المجهود البسيط", en: "Dyspnea on mild exertion"}
+  - {ar: "دم في البراز أو البول", en: "Blood in stool or urine"}
+  - {ar: "حمى أو تعرّق ليلي مستمر", en: "Persistent fever or night sweats"}
+  - {ar: "إرهاق استمر >٦ أسابيع رغم تحسين النوم والنشاط", en: "Fatigue >6 weeks despite lifestyle improvements"}
+
+sources:
+  - https://cks.nice.org.uk/topics/tiredness-fatigue-in-adults/
+
+needs_clinical_review: true

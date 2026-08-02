@@ -1,0 +1,148 @@
+id: headache
+name: {ar: "الصداع", en: "Headache"}
+category: neuro
+age_range: adult
+
+synonyms:
+  - headache
+  - migraine
+  - tension headache
+  - head pain
+  - صداع
+  - وجع راس
+  - صداع شديد
+  - صداع نصفي
+  - شقيقة
+
+red_flags:
+  - question:
+      ar: هل بدأ الصداع فجأة وكأنه ضربة على راسك خلال أقل من دقيقة؟
+      en: Sudden "thunderclap" onset reaching max intensity in <1 min?
+    severity: emergency
+    rationale: SAH (subarachnoid hemorrhage) until proven otherwise.
+  - question:
+      ar: هل الصداع مع تيبّس رقبة وحساسية للضوء وحمى؟
+      en: Headache with neck stiffness, photophobia, fever?
+    severity: emergency
+    rationale: Meningitis screen.
+  - question:
+      ar: هل في ضعف مفاجئ في جانب من الجسم، صعوبة كلام، أو شلل في الوجه؟
+      en: Sudden focal weakness, speech difficulty, or facial droop?
+    severity: emergency
+    rationale: Stroke / TIA (FAST positive).
+  - question:
+      ar: هل الصداع أسوأ صداع في حياتك أو مختلف عن أي صداع جربته قبل كده؟
+      en: '"Worst headache of your life" or qualitatively new?'
+    severity: emergency
+    rationale: New severe pattern in adult — needs imaging.
+  - question:
+      ar: هل عندك سرطان معروف، أو ضعف مناعة، أو الصداع جاي بعد ضربة قوية؟
+      en: Known cancer, immunocompromise, or post-head-trauma?
+    severity: urgent
+    rationale: Metastasis / brain abscess / subdural screen.
+
+differentials:
+  - name: {ar: "صداع توتري", en: "Tension-type headache"}
+    likelihood: very_common
+    key_features:
+      - {ar: "ضغط بنطاق حول الراس", en: "Band-like pressure around head"}
+      - {ar: "خفيف-متوسط ولا يمنع النشاط", en: "Mild-moderate, doesn't disable"}
+      - {ar: "مرتبط بالإرهاق أو التوتر", en: "Linked to stress / fatigue"}
+    icd10: G44.2
+  - name: {ar: "شقيقة (Migraine)", en: "Migraine"}
+    likelihood: common
+    key_features:
+      - {ar: "نابض في جانب واحد من الراس", en: "Throbbing, unilateral"}
+      - {ar: "غثيان وحساسية للضوء والصوت", en: "Nausea + photophobia + phonophobia"}
+      - {ar: "يستمر ٤-٧٢ ساعة", en: "Lasts 4-72 h"}
+      - {ar: "قد يسبقه أورا (وميض/تنميل)", en: "Optional aura (flashes/tingling)"}
+    icd10: G43.9
+  - name: {ar: "صداع الجيوب الأنفية", en: "Sinus headache"}
+    likelihood: common
+    key_features:
+      - {ar: "ألم في الجبهة أو الخدين يزداد بالانحناء", en: "Frontal/maxillary pain worse on bending"}
+      - {ar: "إفرازات أنفية صفراء/خضراء", en: "Purulent rhinorrhea"}
+      - {ar: "مرتبط بنزلة برد حالية", en: "Concurrent URI"}
+    icd10: J01
+  - name: {ar: "صداع نزيف تحت العنكبوتية", en: "Subarachnoid hemorrhage"}
+    likelihood: emergency
+    key_features:
+      - {ar: "ثانيتين-دقيقة لذروة الألم (Thunderclap)", en: "Onset to max in seconds-minutes"}
+      - {ar: "قيء + تيبّس رقبة", en: "Vomiting + neck stiffness"}
+      - {ar: "فقدان وعي مؤقت", en: "Transient LOC"}
+    icd10: I60
+  - name: {ar: "التهاب السحايا", en: "Meningitis"}
+    likelihood: emergency
+    key_features:
+      - {ar: "حمى + تيبّس رقبة + حساسية للضوء", en: "Fever + neck stiffness + photophobia"}
+      - {ar: "طفح غير زائل بالضغط (سحائي)", en: "Non-blanching rash (meningococcal)"}
+    icd10: G03
+  - name: {ar: "صداع الاستخدام المفرط للمسكنات", en: "Medication-overuse headache"}
+    likelihood: common
+    key_features:
+      - {ar: "استخدام مسكنات >١٥ يوم/شهر", en: "Analgesic use >15 days/month"}
+      - {ar: "صداع يومي خفيف الشدة", en: "Daily low-grade headache"}
+    icd10: G44.4
+
+followup_questions:
+  - field_id: onset
+    question: {ar: "امتى بدأ الصداع وكام مدته؟", en: "When did it start? How long did each episode last?"}
+    relevance: always
+  - field_id: pain_location
+    question: {ar: "ألم في جانب واحد ولا اتنين؟ مقدمة ولا مؤخرة الراس؟", en: "Unilateral or bilateral? Frontal/temporal/occipital?"}
+    relevance: always
+  - field_id: pain_character
+    question: {ar: "نابض، ضاغط، طاعن، حارق؟", en: "Throbbing, pressing, sharp, burning?"}
+    relevance: always
+  - field_id: triggers
+    question: {ar: "في حاجة بتجيب الصداع؟ (قلة نوم، شاشة، أكل معين، ضغط نفسي)", en: "Triggers? (Sleep, screen, food, stress)"}
+    relevance: if_no_red_flag
+  - field_id: aura
+    question: {ar: "في أي وميض في العين أو تنميل قبل الصداع؟", en: "Any visual aura or tingling preceding the pain?"}
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: paracetamol
+    instruction:
+      ar: باراسيتامول ١٠٠٠ مج عن طريق الفم — الجرعة الأولى مهمة (هي أحسن من ٥٠٠ مج لمعظم الصداع).
+      en: Paracetamol 1000 mg PO — first dose matters (more effective than 500 mg).
+    duration: max every 6 h, 3 days
+  - drug_id: ibuprofen
+    instruction:
+      ar: بروفين ٤٠٠ مج مع الأكل — لو الصداع توتري أو شقيقة خفيفة.
+      en: Ibuprofen 400 mg PO with food — for tension-type or mild migraine.
+    duration: every 6-8h, 3 days
+    contraindications:
+      - {ar: "لا تستخدم بدون استشارة لو في قرحة معدية أو فشل كلوي", en: "Avoid if peptic ulcer / renal disease"}
+  - drug_id: ""
+    instruction:
+      ar: راحة في غرفة مظلمة هادية. كمادات باردة على الجبهة. ٢-٣ لتر مياه/يوم.
+      en: Rest in a dark, quiet room. Cold compress to forehead. 2-3 L water/day.
+    duration: as needed
+  - drug_id: ""
+    instruction:
+      ar: تنظيم نوم ٧-٨ ساعات + تقليل وقت الشاشة + تخفيف الكافيين تدريجيًا.
+      en: 7-8 h sleep, reduce screen time, taper caffeine gradually.
+    duration: 2 weeks behavior change
+
+workup:
+  - name: {ar: "أشعة مقطعية على الراس", en: "Brain CT"}
+    indication: {ar: "لو red flag (thunderclap / focal deficit / known cancer)", en: "For any red flag"}
+    priority: emergent
+  - name: {ar: "بزل قطني", en: "Lumbar puncture"}
+    indication: {ar: "لاستبعاد SAH أو سحائي", en: "Rule out SAH / meningitis"}
+    priority: emergent
+
+when_to_escalate:
+  - {ar: "صداع بدأ فجأة في أقل من دقيقة", en: "Sudden thunderclap onset"}
+  - {ar: "ضعف في جانب من الجسم أو صعوبة كلام", en: "Focal neurological deficit"}
+  - {ar: "حمى + تيبّس رقبة", en: "Fever + neck stiffness"}
+  - {ar: "قيء مستمر مع الصداع", en: "Persistent vomiting with the headache"}
+  - {ar: "عدم تحسّن بعد ٧٢ ساعة رغم المسكنات", en: "No improvement after 72h on analgesics"}
+
+sources:
+  - https://cks.nice.org.uk/topics/headache-assessment/
+  - https://cks.nice.org.uk/topics/migraine/
+  - https://www.nice.org.uk/guidance/cg150  # Headaches in over 12s
+
+needs_clinical_review: true

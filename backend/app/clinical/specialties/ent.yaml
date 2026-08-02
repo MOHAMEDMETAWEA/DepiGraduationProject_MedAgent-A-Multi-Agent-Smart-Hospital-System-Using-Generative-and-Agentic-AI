@@ -1,0 +1,30 @@
+id: ent
+name: {ar: "أنف وأذن وحنجرة", en: "Otorhinolaryngology (ENT)"}
+description:
+  ar: التهابات الأنف، الجيوب الأنفية، الحلق، الأذن، البلع، الصوت.
+  en: Nose, sinuses, throat, ears, swallowing, voice.
+
+fields:
+  - {id: age, label: {ar: "العمر", en: "Age"}, section: demographics, required: true, free_text: false}
+  - {id: sex, label: {ar: "الجنس", en: "Sex"}, section: demographics, required: true, free_text: false}
+
+  - {id: chief_complaint, label: {ar: "الشكوى الرئيسية (حلق/أذن/أنف/صوت)", en: "Chief complaint (throat/ear/nose/voice)"}, section: chief_complaint, required: true, free_text: true}
+  - {id: onset, label: {ar: "بداية الأعراض", en: "Symptom onset"}, section: hpi, required: true, free_text: true}
+  - {id: laterality, label: {ar: "أي جانب (يمين/يسار/الاتنين)؟", en: "Which side (R/L/bilateral)?"}, section: hpi, required: true, free_text: true}
+  - {id: fever, label: {ar: "في حرارة معاها؟", en: "Any fever?"}, section: hpi, required: true, free_text: true}
+  - {id: discharge, label: {ar: "في إفرازات؟ (لون، رائحة)", en: "Any discharge? (color, smell)"}, section: hpi, required: false, free_text: true}
+  - {id: hearing, label: {ar: "تغيّر في السمع؟ طنين؟", en: "Change in hearing? Tinnitus?"}, section: hpi, required: false, free_text: true}
+  - {id: swallow, label: {ar: "صعوبة في البلع؟ سيلان لعاب؟", en: "Difficulty swallowing? Drooling?"}, section: hpi, required: false, free_text: true}
+  - {id: voice_change, label: {ar: "تغيّر في الصوت (بحة)؟ مدته؟", en: "Voice change (hoarseness)? Duration?"}, section: hpi, required: false, free_text: true}
+
+  - {id: pmh_recurrent, label: {ar: "التهابات متكررة (لوزتين، أذن وسطى)", en: "Recurrent infections (tonsillitis, otitis media)"}, section: pmh, required: false, free_text: true}
+  - {id: pmh_allergy, label: {ar: "حساسية موسمية أو مزمنة", en: "Seasonal/chronic allergy"}, section: pmh, required: false, free_text: true}
+
+  - {id: current_meds, label: {ar: "الأدوية الحالية", en: "Current medications"}, section: meds, required: true, free_text: true}
+  - {id: allergies, label: {ar: "حساسية أدوية", en: "Drug allergies"}, section: allergies, required: true, free_text: true}
+
+  - {id: smoking, label: {ar: "التدخين", en: "Smoking"}, section: social, required: false, free_text: true}
+  - {id: voice_use, label: {ar: "استخدام صوتي مكثّف (تدريس، غناء)؟", en: "Vocal-heavy occupation (teaching, singing)?"}, section: social, required: false, free_text: true}
+
+required_red_flag_complaints:
+  - sore_throat

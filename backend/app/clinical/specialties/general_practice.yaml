@@ -1,0 +1,62 @@
+id: general_practice
+name: {ar: "طب الأسرة / الباطنة العامة", en: "General practice / family medicine"}
+description:
+  ar: تخصص شامل للبالغين — الفرز الأولي، الحالات المزمنة، الفحص الدوري.
+  en: Adult primary care — first-line triage, chronic management, screening.
+
+# Fields the agent must collect before generating the H&P handoff.
+# `required: true` blocks completion until filled. The intake mode runs
+# adaptive questions until all required fields are populated, then stops.
+fields:
+  # ── Demographics ─────────────────────────────────────────────────
+  - {id: age, label: {ar: "العمر", en: "Age"}, section: demographics, required: true, free_text: false}
+  - {id: sex, label: {ar: "الجنس", en: "Sex"}, section: demographics, required: true, free_text: false}
+  - {id: occupation, label: {ar: "المهنة", en: "Occupation"}, section: demographics, required: false, free_text: true}
+
+  # ── Chief complaint + HPI ────────────────────────────────────────
+  - {id: chief_complaint, label: {ar: "الشكوى الرئيسية", en: "Chief complaint"}, section: chief_complaint, required: true, free_text: true}
+  - {id: onset, label: {ar: "بداية الأعراض", en: "Symptom onset"}, section: hpi, required: true, free_text: true}
+  - {id: duration, label: {ar: "المدة", en: "Duration"}, section: hpi, required: true, free_text: true}
+  - {id: progression, label: {ar: "التطوّر (تحسّن/ثبات/تدهور)", en: "Progression (improving/stable/worsening)"}, section: hpi, required: true, free_text: true}
+  - {id: severity, label: {ar: "شدة الأعراض (٠-١٠)", en: "Severity (0-10)"}, section: hpi, required: false, free_text: true}
+  - {id: aggravating_factors, label: {ar: "عوامل تزيدها", en: "Aggravating factors"}, section: hpi, required: false, free_text: true}
+  - {id: relieving_factors, label: {ar: "عوامل تخففها", en: "Relieving factors"}, section: hpi, required: false, free_text: true}
+  - {id: associated_symptoms, label: {ar: "أعراض مرافقة", en: "Associated symptoms"}, section: hpi, required: false, free_text: true}
+
+  # ── Past medical history ─────────────────────────────────────────
+  - {id: pmh_chronic, label: {ar: "أمراض مزمنة (سكر، ضغط، قلب، ربو)", en: "Chronic conditions (DM, HTN, cardiac, asthma)"}, section: pmh, required: true, free_text: true}
+  - {id: pmh_surgeries, label: {ar: "عمليات جراحية سابقة", en: "Past surgeries"}, section: pmh, required: false, free_text: true}
+  - {id: pmh_hospitalizations, label: {ar: "تنويم مستشفى سابق", en: "Prior hospitalizations"}, section: pmh, required: false, free_text: true}
+
+  # ── Medications + allergies ──────────────────────────────────────
+  - {id: current_meds, label: {ar: "الأدوية الحالية (اسم + جرعة)", en: "Current medications (name + dose)"}, section: meds, required: true, free_text: true}
+  - {id: allergies, label: {ar: "حساسية أدوية أو طعام", en: "Drug or food allergies"}, section: allergies, required: true, free_text: true}
+
+  # ── Social ───────────────────────────────────────────────────────
+  - {id: smoking, label: {ar: "التدخين (نوع/مدة/كمية)", en: "Smoking (type/duration/amount)"}, section: social, required: true, free_text: true}
+  - {id: alcohol, label: {ar: "شرب الكحول", en: "Alcohol use"}, section: social, required: false, free_text: true}
+  - {id: exercise, label: {ar: "نشاط بدني", en: "Physical activity"}, section: social, required: false, free_text: true}
+
+  # ── Family ───────────────────────────────────────────────────────
+  - {id: fh_cardiac, label: {ar: "تاريخ عائلي لجلطة قلب / سكتة قبل ٦٠", en: "Family history of MI/stroke <60"}, section: family, required: false, free_text: true}
+  - {id: fh_cancer, label: {ar: "تاريخ عائلي سرطان", en: "Family history of cancer"}, section: family, required: false, free_text: true}
+
+  # ── Review of systems (lightweight, complaint-driven) ────────────
+  - {id: ros_constitutional, label: {ar: "عام — حمى، فقدان وزن، تعرّق ليلي", en: "Constitutional — fever, weight loss, night sweats"}, section: ros, required: false, free_text: true}
+  - {id: ros_cardiac, label: {ar: "قلبي — ألم صدر، خفقان، تورّم ساقين", en: "Cardiac — chest pain, palpitations, leg edema"}, section: ros, required: false, free_text: true}
+  - {id: ros_respiratory, label: {ar: "تنفسي — كحة، ضيق نفس", en: "Respiratory — cough, dyspnea"}, section: ros, required: false, free_text: true}
+  - {id: ros_gi, label: {ar: "هضمي — غثيان، تغيّر إخراج", en: "GI — nausea, bowel changes"}, section: ros, required: false, free_text: true}
+
+  # ── Vitals (if the patient has them) ─────────────────────────────
+  - {id: bp, label: {ar: "ضغط الدم (لو معاك جهاز قياس)", en: "BP (if home cuff available)"}, section: vitals, required: false, free_text: true}
+  - {id: temp, label: {ar: "درجة الحرارة", en: "Temperature"}, section: vitals, required: false, free_text: true}
+  - {id: pulse, label: {ar: "النبض", en: "Pulse rate"}, section: vitals, required: false, free_text: true}
+
+# Chief complaints this specialty must always screen red flags for,
+# regardless of what the patient leads with. e.g. if a primary-care
+# patient mentions "tired" but is 60yo with crushing chest pain
+# overnight, we still ask the chest_pain red-flag set.
+required_red_flag_complaints:
+  - chest_pain
+  - headache
+  - abdominal_pain

@@ -1,0 +1,231 @@
+id: fever
+name:
+  ar: الحمى
+  en: Fever
+category: general
+age_range: adult
+
+synonyms:
+  - fever
+  - high temperature
+  - high temp
+  - pyrexia
+  - hot
+  - حمى
+  - حرارة
+  - سخونة
+  - حرارة مرتفعة
+  - حرارته عالية
+  - حرارته طلعت
+
+red_flags:
+  - question:
+      ar: هل الحمى مصحوبة بصداع شديد + تيبّس في الرقبة + حساسية للضوء؟
+      en: Severe headache + neck stiffness + photophobia?
+    severity: emergency
+    rationale: Meningitis triad — needs LP / IV antibiotics within 1h.
+  - question:
+      ar: هل في طفح جلدي لا يختفي عند الضغط بكوب زجاج عليه؟
+      en: Non-blanching rash that stays when pressed under glass?
+    severity: emergency
+    rationale: Meningococcal sepsis — purpuric rash is hyperacute.
+  - question:
+      ar: هل الحرارة فوق ٤٠ مع رعشة شديدة وارتباك أو نعاس شديد؟
+      en: Temperature >40°C with rigors and confusion or marked drowsiness?
+    severity: emergency
+    rationale: Sepsis screen (qSOFA/NEWS2 territory).
+  - question:
+      ar: هل بدأت الحمى بعد ٣ أسابيع من السفر لمنطقة ملاريا أو رجوع من ضيافة ماشية؟
+      en: Fever started within 3 weeks of travel to a malaria-endemic area or zoonotic exposure?
+    severity: urgent
+    rationale: Imported malaria / brucellosis — needs thick film + serology.
+  - question:
+      ar: هل عندك ضعف مناعة معروف (سرطان، علاج كيماوي، HIV، زرع عضو)؟
+      en: Known immunocompromise (cancer, chemo, HIV, transplant)?
+    severity: emergency
+    rationale: Febrile neutropenia rule — ANC<500 + fever = same-hour antibiotics.
+
+differentials:
+  - name:
+      ar: عدوى فيروسية للجهاز التنفسي العلوي
+      en: Viral URI
+    likelihood: very_common
+    key_features:
+      - ar: التهاب حلق / رشح / كحة
+        en: Sore throat / runny nose / cough
+      - ar: ألم عضلي خفيف
+        en: Mild myalgia
+      - ar: حرارة ٣٨-٣٩
+        en: Fever 38-39°C
+    icd10: J06.9
+  - name:
+      ar: التهاب اللوزتين البكتيري
+      en: Bacterial tonsillitis
+    likelihood: common
+    key_features:
+      - ar: ألم حلق شديد + بقع بيضاء
+        en: Severe sore throat with exudates
+      - ar: غدد ليمفاوية متضخّمة
+        en: Tender cervical adenopathy
+      - ar: غياب الكحة (Centor)
+        en: No cough (Centor criterion)
+    icd10: J03.9
+  - name:
+      ar: التهاب المسالك البولية
+      en: UTI
+    likelihood: common
+    key_features:
+      - ar: حرقان أثناء التبوّل
+        en: Dysuria
+      - ar: تكرّر البول مع عسر
+        en: Frequency / urgency
+      - ar: ألم في الخاصرة لو وصل للكلية
+        en: Flank pain if pyelonephritis
+    icd10: N39.0
+  - name:
+      ar: التهاب الجيوب الأنفية
+      en: Acute sinusitis
+    likelihood: common
+    key_features:
+      - ar: ألم بالوجه يزداد بالانحناء
+        en: Facial pain worse on bending
+      - ar: إفرازات أنفية صفراء/خضراء
+        en: Purulent rhinorrhea
+      - ar: استمرار >١٠ أيام
+        en: Persistent >10 days
+    icd10: J01.9
+  - name:
+      ar: التهاب رئوي (Pneumonia)
+      en: Pneumonia
+    likelihood: uncommon
+    key_features:
+      - ar: كحة منتجة + ألم صدر طاعن
+        en: Productive cough + pleuritic chest pain
+      - ar: ضيق نفس
+        en: Dyspnea
+      - ar: حرارة عالية مع رعشة
+        en: High fever with rigors
+    icd10: J18.9
+  - name:
+      ar: عدوى الكلى (Pyelonephritis)
+      en: Pyelonephritis
+    likelihood: uncommon
+    key_features:
+      - ar: ألم خاصرة + غثيان وقيء
+        en: Flank pain + nausea/vomiting
+      - ar: حرقان شديد أثناء التبوّل
+        en: Severe dysuria
+      - ar: حمى >٣٨.٥
+        en: Fever >38.5°C
+    icd10: N10
+  - name:
+      ar: ملاريا (لمن سافر لمنطقة موبوءة)
+      en: Malaria (in returned traveler)
+    likelihood: emergency
+    key_features:
+      - ar: حمى دورية كل ٤٨-٧٢ ساعة
+        en: Cyclical fever every 48-72 h
+      - ar: تاريخ سفر خلال ٣ أسابيع
+        en: Travel history within 3 weeks
+      - ar: رعشة وتعرّق غزير
+        en: Rigors + drenching sweats
+    icd10: B54
+
+followup_questions:
+  - field_id: temperature_max
+    question:
+      ar: أعلى درجة حرارة سجّلتها كانت كام، وامتى قسّتها؟
+      en: What was the highest temperature recorded, and when?
+    relevance: always
+  - field_id: duration
+    question:
+      ar: من امتى بدأت الحرارة؟
+      en: How long has the fever lasted?
+    relevance: always
+  - field_id: associated_symptoms
+    question:
+      ar: في كحة، ألم حلق، حرقان بول، إسهال، أو طفح جلدي؟
+      en: Any cough, sore throat, dysuria, diarrhea, or rash?
+    relevance: always
+  - field_id: travel
+    question:
+      ar: هل سافرت خلال آخر شهر؟ لو نعم، فين؟
+      en: Any travel in the past month? Where?
+    relevance: if_no_red_flag
+  - field_id: meds_tried
+    question:
+      ar: جرّبت تاخد خافض حرارة (باراسيتامول/بروفين)؟ نزّلت الحرارة؟
+      en: Have you tried an antipyretic (paracetamol/ibuprofen)? Did it work?
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: paracetamol
+    instruction:
+      ar: باراسيتامول ٥٠٠-١٠٠٠ مج عن طريق الفم كل ٦ ساعات (بحد أقصى ٤ جرام/يوم) لخفض الحرارة وتسكين الألم.
+      en: Paracetamol 500-1000 mg PO every 6 h (max 4 g/day) for fever and pain.
+    duration: 3 days; reassess if fever persists
+    contraindications:
+      - ar: تجنّب لو في فشل كبدي معروف
+        en: Avoid if known hepatic failure
+  - drug_id: ibuprofen
+    instruction:
+      ar: بروفين ٤٠٠ مج كل ٨ ساعات مع الأكل (بحد أقصى ١٢٠٠ مج/يوم OTC).
+      en: Ibuprofen 400 mg PO every 8 h with food (max 1200 mg/day OTC).
+    duration: 3 days; do not combine with paracetamol unless one isn't enough
+    contraindications:
+      - ar: تجنّب لو في قرحة معدية، فشل كلوي، حمل ثلث ثالث، أو نزف معدي
+        en: Avoid if active ulcer, renal failure, 3rd-trimester pregnancy, or GI bleed
+  - drug_id: ""
+    instruction:
+      ar: شرب ٢-٣ لتر مياه أو محلول معالجة جفاف يوميًا. ارتداء ملابس قطنية خفيفة. كمادات فاترة (مش باردة) على الجبهة والإبطين.
+      en: 2-3 L water or ORS per day. Light cotton clothing. Lukewarm (not cold) compresses on forehead + axillae.
+    duration: until fever resolves
+  - drug_id: ""
+    instruction:
+      ar: راحة سرير، تجنّب المجهود، نوم ٧-٨ ساعات.
+      en: Bed rest, avoid exertion, sleep 7-8 h.
+    duration: until 24 h after fever resolves
+
+workup:
+  - name:
+      ar: تعداد دم كامل (CBC)
+      en: Complete blood count
+    indication:
+      ar: للتفريق بين فيروسي وبكتيري ولاستبعاد قلة الكريات البيضاء
+      en: Differentiate viral vs bacterial; rule out neutropenia
+    priority: routine
+  - name:
+      ar: تحليل بول
+      en: Urinalysis
+    indication:
+      ar: لو شك في عدوى مسالك بولية
+      en: If UTI suspected
+    priority: routine
+  - name:
+      ar: CRP / ESR
+      en: CRP / ESR
+    indication:
+      ar: مؤشر التهاب
+      en: Inflammatory marker
+    priority: routine
+
+when_to_escalate:
+  - ar: الحرارة فوق ٣٩ واستمرّت أكثر من ٤٨ ساعة رغم خافضات الحرارة
+    en: Fever >39°C lasting >48 h despite antipyretics
+  - ar: صداع شديد + تيبّس رقبة + حساسية للضوء
+    en: Severe headache + neck stiffness + photophobia
+  - ar: ضيق نفس أو ألم صدر جديد
+    en: New shortness of breath or chest pain
+  - ar: طفح جلدي ينتشر بسرعة
+    en: Rapidly spreading rash
+  - ar: ارتباك أو نعاس غير معتاد
+    en: Confusion or unusual drowsiness
+  - ar: ضعف مناعة معروف (سرطان، علاج كيماوي)
+    en: Known immunocompromise
+
+sources:
+  - https://cks.nice.org.uk/topics/fever-in-adults/
+  - https://www.nice.org.uk/guidance/ng143  # Fever in under 5s
+  - https://www.who.int/publications/i/item/9789241549257  # WHO IMCI
+
+needs_clinical_review: true

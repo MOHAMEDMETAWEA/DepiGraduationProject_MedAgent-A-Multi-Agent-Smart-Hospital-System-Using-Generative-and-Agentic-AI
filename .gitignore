@@ -1,0 +1,109 @@
+# ===== Secrets & env =====
+.env
+.env.local
+.env.*.local
+!.env.example
+*.pem
+*.key
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ===== Node / Next.js =====
+node_modules/
+.pnpm-store/
+.next/
+out/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
+# ===== Build outputs =====
+dist/
+build/
+
+# ===== Logs =====
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ===== IDE / Editors =====
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== ML / Data (large files we never commit) =====
+data/raw/
+data/processed/
+data/gold/
+data/knowledge_base/raw/
+data/knowledge_base/embeddings/
+*.ckpt
+*.safetensors
+*.bin
+*.pt
+*.pth
+mlruns/
+mlflow.db
+wandb/
+
+# ===== Docker =====
+.docker/
+
+# ===== Test artifacts =====
+playwright-report/
+test-results/
+
+
+# ===== Personal / Private =====
+.claude/
+# plan.md
+
+# ===== Local backups / scratch =====
+# Author-side backups (e.g. system_ar.v1.bak.txt) — keep local, don't ship.
+*.bak.txt
+*.bak
+*.orig
+*~
+
+

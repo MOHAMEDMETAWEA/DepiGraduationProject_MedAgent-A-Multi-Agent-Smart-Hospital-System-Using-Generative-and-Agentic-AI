@@ -1,6 +1,0 @@
-@MedAgent.Api_HostAddress = http://localhost:5023
-
-GET {{MedAgent.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

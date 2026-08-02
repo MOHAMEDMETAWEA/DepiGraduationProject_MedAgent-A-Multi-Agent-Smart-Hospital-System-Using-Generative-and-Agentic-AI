@@ -1,0 +1,424 @@
+{
+  "common": {
+    "appName": "MedAgent",
+    "tagline": "مساعد الفرز الطبي ثنائي اللغة",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "signUp": "إنشاء حساب",
+    "getStarted": "ابدأ الآن",
+    "loading": "جارٍ التحميل…",
+    "saving": "جارٍ الحفظ…",
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "back": "رجوع",
+    "continue": "متابعة",
+    "edit": "تعديل",
+    "save": "حفظ",
+    "delete": "حذف",
+    "yes": "نعم",
+    "no": "لا",
+    "patient": "مريض",
+    "doctor": "طبيب",
+    "admin": "مسؤول",
+    "you": "أنت"
+  },
+  "nav": {
+    "chat": "محادثة",
+    "history": "السجل",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "inbox": "البريد الوارد",
+    "dashboard": "لوحة التحكم",
+    "users": "المستخدمون",
+    "doctorsPending": "الأطباء قيد المراجعة",
+    "safety": "الأمان",
+    "audit": "سجل التدقيق",
+    "support": "الدعم"
+  },
+  "home": {
+    "eyebrow": "فرز طبي مدعوم بالذكاء الاصطناعي",
+    "titlePart1": "مساعدك الطبي",
+    "titlePart2": "الذكي",
+    "subtitle": "احصل على تقييم طبي فوري ومبني على الأدلة بالعربية أو الإنجليزية. صف أعراضك ودعنا نرشدك إلى الرعاية المناسبة.",
+    "ctaPrimary": "ابدأ مجانًا",
+    "ctaSecondary": "تسجيل الدخول",
+    "stats": {
+      "conditions": "حالة طبية",
+      "languages": "لغتان",
+      "available": "على مدار الساعة"
+    },
+    "featuresEyebrow": "لماذا MedAgent",
+    "featuresTitle": "مبني على الدقة والأمان وسهولة الوصول",
+    "featuresSubtitle": "كل ادعاء طبي مدعوم بمصادر موثقة.",
+    "features": {
+      "triage": {
+        "title": "فرز فوري",
+        "desc": "احصل على تقييم سريع لأعراضك مع مستوى استعجال واضح — طارئ، عاجل، أو روتيني."
+      },
+      "bilingual": {
+        "title": "عربي + إنجليزي",
+        "desc": "تواصل بشكل طبيعي بالعربية أو الإنجليزية أو امزج اللغتين في نفس المحادثة."
+      },
+      "safe": {
+        "title": "مبني على الأدلة",
+        "desc": "كل ادعاء طبي مدعوم بمصادر موثقة. يتم اكتشاف الأعراض الحرجة وتصعيدها فورًا."
+      }
+    },
+    "cta": {
+      "title": "جاهز عندما تكون مستعدًا",
+      "subtitle": "أنشئ حسابك المجاني واحصل على تقييم طبي فوري.",
+      "button": "أنشئ حسابًا مجانيًا",
+      "free": "مجاني تمامًا",
+      "noCard": "بدون بطاقة ائتمان"
+    },
+    "footer": {
+      "disclaimer": "لأغراض تعليمية. ليس استشارة طبية."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "أهلاً بعودتك",
+      "subtitle": "سجل دخولك إلى حسابك في MedAgent",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "submitting": "جارٍ تسجيل الدخول…",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "createAccount": "أنشئ حسابًا"
+    },
+    "register": {
+      "title": "أنشئ حسابك",
+      "subtitle": "فرز طبي مجاني وآمن بلغتين",
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "اسمك بالكامل",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "8 أحرف على الأقل",
+      "role": "أنا",
+      "patient": "مريض",
+      "doctor": "طبيب",
+      "licenseNumber": "رقم الترخيص",
+      "licenseNumberPlaceholder": "مثال: EG-12345-DOC",
+      "specialty": "التخصص",
+      "specialtyPlaceholder": "مثال: قلب وأوعية",
+      "submit": "أنشئ حسابي",
+      "submitting": "جارٍ إنشاء الحساب…",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "signIn": "تسجيل الدخول",
+      "successTitle": "تحقق من بريدك",
+      "successDesc": "أرسلنا رابط التحقق إلى صندوق وارد بريدك.",
+      "successCta": "الانتقال لتسجيل الدخول",
+      "errors": {
+        "fullNameRequired": "الاسم الكامل مطلوب",
+        "invalidEmail": "أدخل بريدًا إلكترونيًا صحيحًا",
+        "passwordTooShort": "كلمة المرور يجب أن تكون 8 أحرف على الأقل"
+      }
+    },
+    "forgot": {
+      "title": "نسيت كلمة المرور",
+      "subtitle": "أدخل بريدك وسنرسل لك رابط إعادة تعيين",
+      "email": "البريد الإلكتروني",
+      "submit": "أرسل رابط الاستعادة",
+      "submitting": "جارٍ الإرسال…",
+      "back": "العودة لتسجيل الدخول",
+      "successTitle": "تحقق من بريدك",
+      "successDesc": "إذا كان هناك حساب بهذا البريد فقد أرسلنا رابط استعادة."
+    },
+    "reset": {
+      "title": "إعادة تعيين كلمة المرور",
+      "subtitle": "اختر كلمة مرور جديدة لحسابك",
+      "password": "كلمة المرور الجديدة",
+      "passwordPlaceholder": "8 أحرف على الأقل",
+      "submit": "إعادة التعيين",
+      "submitting": "جارٍ التعيين…",
+      "successTitle": "تم تحديث كلمة المرور",
+      "successDesc": "تم تحديث كلمة مرورك بنجاح.",
+      "successCta": "تسجيل الدخول"
+    },
+    "verify": {
+      "loadingTitle": "جارٍ التحقق من بريدك…",
+      "loadingDesc": "يرجى الانتظار أثناء التحقق من عنوان بريدك الإلكتروني.",
+      "successTitle": "تم التحقق من البريد",
+      "successDesc": "تم التحقق من بريدك. يمكنك الآن تسجيل الدخول.",
+      "errorTitle": "رابط غير صالح",
+      "errorDesc": "رابط التحقق هذا غير صالح أو منتهي الصلاحية.",
+      "cta": "الانتقال لتسجيل الدخول"
+    }
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "subtitle": "إدارة معلوماتك الشخصية",
+    "personalInfo": "المعلومات الشخصية",
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "role": "النوع",
+    "phone": "رقم الهاتف",
+    "language": "اللغة",
+    "memberSince": "عضو منذ",
+    "save": "حفظ التغييرات",
+    "edit": "تعديل الملف",
+    "deleteAccount": "حذف الحساب",
+    "deleteAccountWarning": "لا يمكن التراجع عن هذا الإجراء. سيتم حذف بياناتك بشكل نهائي."
+  },
+  "chat": {
+    "newChat": "محادثة جديدة",
+    "placeholder": "صف أعراضك…",
+    "send": "إرسال",
+    "comingSoon": "المحادثة قريبًا",
+    "comingSoonDesc": "وكيل الفرز الطبي سيكون جاهزًا في المرحلة الثانية.",
+    "history": "سجل المحادثات",
+    "noHistory": "لا توجد محادثات بعد",
+    "startFirst": "ابدأ محادثتك الأولى",
+    "emergency": "طارئ — توجه للطوارئ فوراً",
+    "urgent": "عاجل — راجع الطبيب اليوم",
+    "routine": "روتيني — مراقبة ورعاية ذاتية",
+    "triageScore": "التقييم",
+    "emergencyAction": "اتصل بـ 123 (مصر) / 911 فوراً",
+    "urgentAction": "راجع الطبيب اليوم",
+    "routineAction": "رعاية ذاتية ومتابعة",
+    "source": "المصدر",
+    "sources": "المصادر",
+    "search": "ابحث في المحادثات…",
+    "allStatus": "الكل",
+    "dateRange": "نطاق التاريخ",
+    "previous": "السابق",
+    "next": "التالي",
+    "triage": {
+      "emergency": "حالة طارئة",
+      "urgent": "حالة عاجلة",
+      "routine": "حالة روتينية",
+      "assessmentComplete": "تم التقييم.",
+      "scorePrefix": "درجة الخطورة",
+      "whyLabel": "لماذا؟"
+    },
+    "watchSignals": {
+      "title": "علامات تستدعي طوارئ فورية:",
+      "disclaimer": "هذه إشارات عامة — حالتك قد تنطوي على مخاطر إضافية. عند الشك، اطلب الرعاية الطبية."
+    },
+    "diagnostics": {
+      "title": "التشخيص التفريقي",
+      "hypotheses": "{count, plural, zero {لا توجد فرضيات} one {فرضية واحدة} two {فرضيتان} few {# فرضيات} many {# فرضية} other {# فرضية}}",
+      "reasoning": "الاستدلال السريري",
+      "supportingEvidence": "أدلة مؤيدة",
+      "contradictingEvidence": "أدلة مخالفة",
+      "recommendedPrefix": "التوصية:"
+    }
+  },
+  "theme": {
+    "toggle": "تبديل المظهر",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "حسب النظام"
+  },
+  "language": {
+    "switch": "تبديل اللغة",
+    "ar": "العربية",
+    "en": "الإنجليزية"
+  },
+  "admin": {
+    "dashboard": {
+      "title": "لوحة التحكم",
+      "subtitle": "نظرة عامة على النظام",
+      "totalUsers": "إجمالي المستخدمين",
+      "activeToday": "نشط اليوم",
+      "safetyIncidents": "حوادث الأمان (هذا الأسبوع)",
+      "pendingDoctors": "أطباء بانتظار الموافقة",
+      "systemHealth": "حالة النظام",
+      "healthy": "سليم"
+    },
+    "users": {
+      "title": "إدارة المستخدمين",
+      "subtitle": "عرض وإدارة جميع حسابات المستخدمين",
+      "search": "بحث بالاسم أو البريد...",
+      "filterRole": "تصفية حسب الدور",
+      "allRoles": "الكل",
+      "activate": "تفعيل",
+      "deactivate": "تعطيل",
+      "changeRole": "تغيير الدور",
+      "roleChanged": "تم تغيير الدور",
+      "statusToggled": "تم تحديث الحالة",
+      "emailVerified": "مفعل",
+      "emailNotVerified": "غير مفعل"
+    },
+    "doctors": {
+      "title": "الأطباء قيد المراجعة",
+      "subtitle": "مراجعة واعتماد حسابات الأطباء",
+      "empty": "لا يوجد أطباء بانتظار المراجعة",
+      "approve": "اعتماد",
+      "reject": "رفض",
+      "reason": "سبب الرفض",
+      "reasonPlaceholder": "اذكر سبب الرفض...",
+      "approved": "تم اعتماد الطبيب",
+      "rejected": "تم رفض الطبيب"
+    },
+    "safety": {
+      "title": "مراقبة الأمان",
+      "subtitle": "مراجعة المحادثات المبلغة وإحصائيات الأمان",
+      "flaggedConversations": "محادثات مبلغة",
+      "noFlagged": "لا توجد محادثات مبلغة",
+      "stats": "إحصائيات الأمان",
+      "hallucinationRate": "معدل التخيلات",
+      "citationRate": "معدل الاستشهاد",
+      "triageInconsistencies": "تناقضات الفرز",
+      "rewrites": "إعادة صياغة محظورة",
+      "uncertainty": "توزيع عدم اليقين"
+    },
+    "audit": {
+      "title": "سجل التدقيق",
+      "subtitle": "سجل جميع العمليات مع سلسلة تجزئة آمنة",
+      "filterAction": "تصفية حسب الإجراء",
+      "verifyChain": "التحقق من سلامة السلسلة",
+      "chainOk": "سلسلة التدقيق سليمة",
+      "chainBroken": "تم اكتشاف تلاعب في السلسلة عند التسلسل",
+      "verifying": "جارٍ التحقق..."
+    }
+  },
+  "doctor": {
+    "inbox": {
+      "title": "البريد الوارد",
+      "subtitle": "تقارير المرضى المحولة إليك",
+      "empty": "لا توجد تقارير واردة بعد",
+      "reviewed": "تمت المراجعة",
+      "markReviewed": "تعليم كمراجع",
+      "notes": "ملاحظات خاصة",
+      "notesPlaceholder": "أضف ملاحظاتك (غير مرئية للمريض)...",
+      "saveNotes": "حفظ الملاحظات",
+      "saved": "تم الحفظ",
+      "downloadPdf": "تحميل PDF",
+      "view": "عرض",
+      "print": "طباعة / PDF",
+      "chiefComplaint": "الشكوى الرئيسية",
+      "noPreview": "لا توجد معاينة متاحة",
+      "patient": "المريض",
+      "clearFilters": "مسح الفلاتر",
+      "pdfUnavailableToast": "خدمة تحويل PDF غير مفعّلة على السيرفر — جاري فتح صفحة طباعة بدلاً من ذلك.",
+      "loadFailed": "تعذّر تحميل القائمة. حاول مرة أخرى.",
+      "retry": "إعادة المحاولة",
+      "searchPlaceholder": "ابحث باسم المريض أو الشكوى الرئيسية",
+      "filtersTitle": "تصفية",
+      "fromDate": "من",
+      "toDate": "إلى",
+      "anyLanguage": "كل اللغات",
+      "anyTriage": "كل الحالات",
+      "pagination": {
+        "prev": "السابق",
+        "next": "التالي",
+        "pageOf": "{page} من {total}"
+      },
+      "tabs": {
+        "all": "الكل",
+        "new": "جديدة",
+        "acknowledged": "مستلمة",
+        "in_progress": "قيد المراجعة",
+        "reviewed": "تمت المراجعة",
+        "closed": "مغلقة"
+      },
+      "status": {
+        "new": "جديدة",
+        "acknowledged": "مستلمة",
+        "in_progress": "قيد المراجعة",
+        "reviewed": "تمت المراجعة",
+        "closed": "مغلقة"
+      },
+      "priority": {
+        "label": "الأولوية",
+        "emergency": "طارئة",
+        "urgent": "عاجلة",
+        "routine": "اعتيادية"
+      },
+      "sort": {
+        "label": "الترتيب حسب",
+        "priority": "الأولوية",
+        "sent_at": "آخر إرسال",
+        "created_at": "آخر إنشاء"
+      },
+      "language": {
+        "ar": "العربية",
+        "en": "الإنجليزية"
+      },
+      "noMatches": "لا توجد تقارير تطابق هذه التصفية"
+    },
+    "handoff": {
+      "title": "تقرير المريض",
+      "patientInfo": "معلومات المريض",
+      "patientName": "اسم المريض",
+      "patientId": "معرّف المريض",
+      "conversationId": "معرّف المحادثة",
+      "targetSpecialty": "التخصص المستهدف",
+      "language": "اللغة",
+      "unknownPatient": "مريض غير معروف",
+      "summary": "الملخص الطبي",
+      "backToInbox": "العودة للبريد الوارد",
+      "actions": {
+        "title": "حالة الحالة",
+        "acknowledge": "استلمت",
+        "start": "ابدأ الفحص",
+        "markReviewed": "تمت المراجعة",
+        "close": "إغلاق الحالة",
+        "updating": "جارٍ التحديث…",
+        "transitionError": "لا يمكن الانتقال إلى هذه الحالة من الوضع الحالي.",
+        "staleError": "تم تحديث هذه الحالة من مكان آخر. حدّث الصفحة لعرض آخر تحديث.",
+        "disabledReason": "غير متاح من الحالة الراهنة",
+        "loadingReason": "جارٍ التحديث…"
+      },
+      "timeline": {
+        "title": "مسار الحالة",
+        "new": "جديد",
+        "acknowledged": "تم الاستلام",
+        "in_progress": "قيد الفحص",
+        "reviewed": "تمت المراجعة",
+        "closed": "تم الإغلاق"
+      },
+      "notes": {
+        "saveError": "تعذّر حفظ الملاحظات. حاول مرة أخرى.",
+        "saving": "جارٍ الحفظ…",
+        "savedAt": "حُفظت عند {time}",
+        "autosaveHint": "الملاحظات تُحفظ تلقائياً أثناء الكتابة"
+      }
+    }
+  },
+  "handoff": {
+    "sendToDoctor": "إرسال للطبيب",
+    "dialogTitle": "إرسال للطبيب",
+    "generating": "جارٍ إنشاء ملخص التقرير…",
+    "searchPlaceholder": "ابحث باسم الطبيب…",
+    "allSpecialties": "كل التخصصات",
+    "noDoctors": "لا يوجد أطباء معتمدون",
+    "messagePlaceholder": "رسالة اختيارية للطبيب…",
+    "sending": "جارٍ الإرسال…",
+    "sendTo": "إرسال إلى د. {name}",
+    "sent": "تم الإرسال!",
+    "sentMessage": "تم إرسال التقرير إلى د. {name}. سيقوم بمراجعته في البريد الوارد.",
+    "done": "تم",
+    "close": "إغلاق",
+    "prev": "السابق",
+    "next": "التالي",
+    "doctors": "{count} طبيب",
+    "yearsExp": "{years} سنة خبرة"
+  },
+  "support": {
+    "title": "المساعدة والدعم",
+    "faq": "الأسئلة الشائعة",
+    "faqSubtitle": "اعثر على إجابات للأسئلة الأكثر شيوعاً",
+    "contact": "اتصل بنا",
+    "contactSubtitle": "لم تجد إجابتك؟ تواصل معنا مباشرة",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "you@example.com",
+    "subject": "الموضوع",
+    "subjectPlaceholder": "عنوان رسالتك",
+    "message": "الرسالة",
+    "messagePlaceholder": "اكتب رسالتك هنا...",
+    "submit": "إرسال",
+    "submitted": "تم إرسال رسالتك بنجاح. سنرد عليك قريباً.",
+    "tryAgain": "حدث خطأ. حاول مرة أخرى."
+  },
+  "errors": {
+    "generic": "حدث خطأ ما. حاول مرة أخرى.",
+    "network": "خطأ في الاتصال. تحقق من شبكتك.",
+    "unauthorized": "يرجى تسجيل الدخول للمتابعة."
+  }
+}

@@ -1,0 +1,202 @@
+id: chest_pain
+name:
+  ar: ألم الصدر
+  en: Chest pain
+category: cardiovascular
+age_range: adult
+
+synonyms:
+  - chest pain
+  - chest pressure
+  - chest tightness
+  - chest discomfort
+  - ألم صدر
+  - ألم في الصدر
+  - حجر على صدري
+  - ضغط على الصدر
+  - وجع في الصدر
+  - وجع قلب
+  - ضيق في الصدر
+  - صدري
+  - في صدري
+  - حسيت بألم في الصدر
+
+red_flags:
+  - question:
+      ar: هل الألم بدأ خلال آخر ساعة، أو ينتشر للذراع الأيسر أو الفك أو الكتف؟
+      en: Did the pain start within the last hour, or does it radiate to the left arm, jaw, or shoulder?
+    severity: emergency
+    rationale: Classic ACS presentation — central pressure radiating to arm/jaw within 12h needs ECG + troponin now.
+  - question:
+      ar: هل الألم مصحوب بضيق نفس شديد أو تعرّق غزير أو غثيان؟
+      en: Is the pain accompanied by severe shortness of breath, heavy sweating, or nausea?
+    severity: emergency
+    rationale: Diaphoresis + dyspnea + chest pain is a high-likelihood MI cluster.
+  - question:
+      ar: هل تعاني من ألم حاد فجائي مع ضيق نفس بعد سفر طويل أو عملية جراحية؟
+      en: Sudden severe pain with shortness of breath after long travel or recent surgery?
+    severity: emergency
+    rationale: Pulmonary embolism screen — Wells criteria territory.
+  - question:
+      ar: هل الألم يمزّق ينتشر للظهر بين لوحي الكتف؟
+      en: Tearing pain radiating to the back between the shoulder blades?
+    severity: emergency
+    rationale: Aortic dissection presentation — needs CT angio urgently.
+  - question:
+      ar: هل سبق وأخبرك طبيب أن عندك ذبحة صدرية أو جلطة قلب أو فشل قلب؟
+      en: Have you been told you have angina, prior MI, or heart failure?
+    severity: emergency
+    rationale: Known CAD raises pre-test probability of ACS substantially.
+
+differentials:
+  - name:
+      ar: متلازمة الشريان التاجي الحادة (ACS)
+      en: Acute coronary syndrome
+    likelihood: emergency
+    key_features:
+      - ar: ضغط أو ثقل وسط الصدر يستمر >15 دقيقة
+        en: Central pressure/heaviness lasting >15 min
+      - ar: انتشار للذراع الأيسر أو الفك
+        en: Radiation to left arm or jaw
+      - ar: تعرّق وغثيان وضيق نفس
+        en: Diaphoresis, nausea, dyspnea
+    icd10: I21
+  - name:
+      ar: انسداد رئوي (PE)
+      en: Pulmonary embolism
+    likelihood: emergency
+    key_features:
+      - ar: ضيق نفس مفاجئ + ألم حاد طاعن
+        en: Sudden dyspnea + sharp pleuritic pain
+      - ar: ساق متورمة من جانب واحد
+        en: Unilateral leg swelling
+      - ar: سفر طويل / سرير راحة طويل / عملية حديثة
+        en: Recent travel / immobility / surgery
+    icd10: I26
+  - name:
+      ar: ارتجاع المريء (GERD)
+      en: GERD / esophagitis
+    likelihood: very_common
+    key_features:
+      - ar: حرقة خلف عظمة القص بعد الأكل
+        en: Burning behind the sternum after meals
+      - ar: تتحسّن بمضادات الحموضة
+        en: Relieved by antacids
+      - ar: تسوء عند الاستلقاء
+        en: Worse when lying flat
+    icd10: K21
+  - name:
+      ar: ألم عضلي هيكلي (Costochondritis)
+      en: Costochondritis / musculoskeletal
+    likelihood: common
+    key_features:
+      - ar: الألم يزداد بالضغط على جدار الصدر
+        en: Reproducible by chest wall palpation
+      - ar: مرتبط بحركة معينة
+        en: Worse with specific movement
+      - ar: لا يوجد تعرّق أو ضيق نفس
+        en: No diaphoresis or dyspnea
+    icd10: M94.0
+  - name:
+      ar: قلق / نوبات هلع
+        # (clinically diagnosed by exclusion only)
+      en: Anxiety / panic attack
+    likelihood: common
+    key_features:
+      - ar: خفقان وارتعاش وشعور بفقدان السيطرة
+        en: Palpitations, trembling, sense of doom
+      - ar: التنفس السريع والوخز في الأطراف
+        en: Hyperventilation, tingling extremities
+      - ar: عمر صغير + لا عوامل خطر قلبية
+        en: Young + no cardiac risk factors
+    icd10: F41.0
+
+followup_questions:
+  - field_id: pain_onset
+    question:
+      ar: امتى بدأ الألم بالظبط؟ (الساعة كام دلوقتي، الألم بدأ امتى؟)
+      en: When exactly did it start? (Time-stamped onset)
+    relevance: always
+  - field_id: pain_character
+    question:
+      ar: هل الألم ضغط، حرقة، طعن، أم تمزّق؟
+      en: Is it pressure, burning, sharp, or tearing?
+    relevance: always
+  - field_id: radiation
+    question:
+      ar: هل الألم يمتد لمكان تاني (ذراع، فك، ظهر)؟
+      en: Does it spread anywhere (arm, jaw, back)?
+    relevance: always
+  - field_id: cardiac_risk
+    question:
+      ar: هل عندك سكر، ضغط، كوليسترول، أو دخّان؟
+      en: Diabetes, hypertension, high cholesterol, or smoking?
+    relevance: if_no_red_flag
+  - field_id: relief_factors
+    question:
+      ar: هل في حاجة بتخفّف الألم (راحة، مضاد حموضة، تغيير وضع)؟
+      en: Anything makes it better (rest, antacid, position change)?
+    relevance: if_no_red_flag
+
+self_care:
+  # We deliberately do NOT recommend aspirin pre-clinical evaluation here
+  # — it's an emergency action when ACS is suspected and the responder is
+  # on the phone with EMS, not a self-care option. The Emergency Playbook
+  # in the system prompt covers that path.
+  - drug_id: paracetamol
+    instruction:
+      ar: لو الألم عضلي مؤكد وغير قلبي، باراسيتامول ٥٠٠-١٠٠٠ مج عن طريق الفم.
+      en: If pain is clearly musculoskeletal (non-cardiac), paracetamol 500-1000 mg PO.
+    duration: as needed up to 48h
+    contraindications:
+      - ar: لا تستخدم لو في شك ولو بسيط في سبب قلبي
+        en: Do not use if any cardiac concern remains
+
+workup:
+  - name:
+      ar: تخطيط القلب الكهربي (ECG)
+      en: 12-lead ECG
+    indication:
+      ar: لاستبعاد متلازمة الشريان التاجي الحادة
+      en: Rule out ACS
+    priority: emergent
+  - name:
+      ar: تروبونين قلبي
+      en: Cardiac troponin (high-sensitivity)
+    indication:
+      ar: للكشف عن إصابة عضلة القلب
+      en: Detect myocardial injury
+    priority: emergent
+  - name:
+      ar: أشعة سينية على الصدر
+      en: Chest X-ray
+    indication:
+      ar: لاستبعاد التهاب رئوي أو استرواح صدري
+      en: Rule out pneumonia / pneumothorax
+    priority: urgent
+  - name:
+      ar: D-dimer
+      en: D-dimer
+    indication:
+      ar: لو Wells score متوسط لانسداد رئوي
+      en: If moderate Wells score for PE
+    priority: urgent
+
+when_to_escalate:
+  - ar: الألم ساعدش بالراحة بعد ١٥ دقيقة
+    en: Pain not relieved by 15 min of rest
+  - ar: ضيق نفس متزايد أو إغماء
+    en: Worsening shortness of breath or syncope
+  - ar: تعرّق غزير مع شحوب
+    en: Heavy sweating with pallor
+  - ar: ألم يمتد للذراع الأيسر أو الفك
+    en: Pain radiating to left arm or jaw
+  - ar: خفقان مستمر مع دوخة
+    en: Persistent palpitations with dizziness
+
+sources:
+  - https://cks.nice.org.uk/topics/chest-pain/
+  - https://www.who.int/publications/i/item/9789241549929  # WHO PEN/IMAI cardiovascular
+  - https://www.acc.org/guidelines/  # AHA/ACC Chest Pain Guideline 2021
+
+needs_clinical_review: true

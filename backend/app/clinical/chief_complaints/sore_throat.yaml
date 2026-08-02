@@ -1,0 +1,111 @@
+id: sore_throat
+name: {ar: "التهاب الحلق", en: "Sore throat"}
+category: ent
+age_range: adult
+
+synonyms:
+  - sore throat
+  - pharyngitis
+  - tonsillitis
+  - strep throat
+  - التهاب حلق
+  - وجع زور
+  - وجع حلق
+  - بحة في الصوت
+  - التهاب لوزتين
+
+red_flags:
+  - question:
+      ar: هل في صعوبة شديدة في التنفس أو سيلان لعاب بسبب صعوبة البلع؟
+      en: Severe difficulty breathing or drooling from inability to swallow?
+    severity: emergency
+    rationale: Epiglottitis / retropharyngeal abscess — airway emergency.
+  - question:
+      ar: هل في انتفاخ في الرقبة من جانب واحد مع ميل الراس؟
+      en: Unilateral neck swelling with head tilt?
+    severity: emergency
+    rationale: Peritonsillar abscess (quinsy) needs drainage.
+  - question:
+      ar: هل عندك ضعف مناعة، علاج كيماوي، أو طفح جلدي ينتشر؟
+      en: Immunocompromise, chemo, or spreading rash?
+    severity: urgent
+    rationale: Severe bacterial infection / scarlet fever.
+
+differentials:
+  - name: {ar: "التهاب فيروسي للحلق", en: "Viral pharyngitis"}
+    likelihood: very_common
+    key_features:
+      - {ar: "التهاب حلق + كحة + رشح", en: "Sore throat + cough + runny nose"}
+      - {ar: "حرارة خفيفة", en: "Low-grade fever"}
+    icd10: J02.9
+  - name: {ar: "التهاب لوزتين بكتيري (سترب)", en: "Strep throat (group A)"}
+    likelihood: common
+    key_features:
+      - {ar: "حرارة >٣٨ + غدد متضخمة + بقع بيضاء + غياب الكحة (Centor)", en: "Fever >38 + tender nodes + exudates + no cough (Centor)"}
+      - {ar: "عمر ٣-١٤ أعلى احتمال", en: "Age 3-14 higher risk"}
+    icd10: J02.0
+  - name: {ar: "التهاب الحلق الناتج عن GERD", en: "GERD-related laryngitis"}
+    likelihood: common
+    key_features:
+      - {ar: "حرقة + بحة في الصوت صباحًا", en: "Heartburn + morning hoarseness"}
+    icd10: J37
+  - name: {ar: "عدد كريات بيضاء (Mononucleosis)", en: "Infectious mononucleosis"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "التهاب حلق شديد + إرهاق + غدد رقبة وإبط", en: "Severe throat + fatigue + cervical/axillary adenopathy"}
+      - {ar: "عمر ١٥-٢٥", en: "Age 15-25 typical"}
+    icd10: B27
+
+followup_questions:
+  - field_id: duration
+    question: {ar: "من إمتى بدأ؟", en: "How long?"}
+    relevance: always
+  - field_id: fever_cough
+    question: {ar: "في حرارة؟ في كحة؟ (Centor criteria)", en: "Fever? Cough? (Centor criteria)"}
+    relevance: always
+  - field_id: lymph_nodes
+    question: {ar: "عندك انتفاخ في غدد الرقبة؟", en: "Swollen neck glands?"}
+    relevance: always
+
+self_care:
+  - drug_id: paracetamol
+    instruction:
+      ar: باراسيتامول ١٠٠٠ مج كل ٦ ساعات (max 4 g/day) لتسكين الألم والحرارة.
+      en: Paracetamol 1000 mg every 6h (max 4 g/day) for pain and fever.
+    duration: 5 days
+  - drug_id: ibuprofen
+    instruction:
+      ar: بروفين ٤٠٠ مج كل ٨ ساعات مع الأكل — مضاد التهاب يقلل ألم الحلق ملحوظ.
+      en: Ibuprofen 400 mg every 8h with food — anti-inflammatory effect.
+    duration: 3-5 days
+  - drug_id: ""
+    instruction:
+      ar: غرغرة بمياه دافئة + ملح (نصف ملعقة في كوب) ٤-٦ مرات يوميًا. مصاصات حلق. شرب سوائل دافئة وعسل (بالغين فقط).
+      en: Warm salt-water gargle (1/2 tsp in cup) 4-6x/day. Throat lozenges. Warm fluids + honey (adults only).
+    duration: until resolved
+  - drug_id: ""
+    instruction:
+      ar: راحة صوتية + تجنّب المهيجات (دخان، أتربة، أكل حار).
+      en: Voice rest + avoid irritants (smoke, dust, spicy food).
+    duration: until resolved
+
+workup:
+  - name: {ar: "مسحة حلق سريعة لسترب", en: "Rapid strep test"}
+    indication: {ar: "لو Centor score ≥ ٢", en: "If Centor ≥2"}
+    priority: routine
+  - name: {ar: "Monospot", en: "Monospot"}
+    indication: {ar: "لو شك في عدد كريات بيضاء", en: "If mono suspected"}
+    priority: routine
+
+when_to_escalate:
+  - {ar: "صعوبة شديدة في البلع لدرجة سيلان اللعاب", en: "Drooling from inability to swallow"}
+  - {ar: "صعوبة في التنفس أو صوت غريب أثناء التنفس (stridor)", en: "Stridor / breathing difficulty"}
+  - {ar: "انتفاخ شديد في الرقبة من جانب واحد", en: "Unilateral neck swelling"}
+  - {ar: "حرارة >٣٩ مستمرة", en: "Persistent fever >39°C"}
+  - {ar: "عدم تحسّن بعد ٧ أيام", en: "No improvement after 7 days"}
+
+sources:
+  - https://cks.nice.org.uk/topics/sore-throat-acute/
+  - https://www.nice.org.uk/guidance/ng84
+
+needs_clinical_review: true

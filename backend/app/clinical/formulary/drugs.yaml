@@ -1,0 +1,248 @@
+# Egyptian Drug Formulary
+# ------------------------
+# Top OTC + commonly recommended drugs with local brand names + dosing.
+# Brand names verified against Vidal/MIMS Egypt and EgyMart Sept-2024.
+# Pediatric doses are MG/KG to force callers to ask weight before
+# recommending — never recommend a child's dose without a weight.
+
+drugs:
+  # ── Analgesics / antipyretics ──────────────────────────────────────
+  - id: paracetamol
+    generic_name: {ar: "باراسيتامول (أسيتامينوفين)", en: "Paracetamol (Acetaminophen)"}
+    brand_names_eg: [Cetal, Panadol, Adol, Abimol, Paramol, Tempra, Cetafen]
+    drug_class: analgesic_antipyretic
+    otc: true
+    pregnancy_category: A   # first-line in pregnancy
+    pediatric_min_age_years: 0  # safe from neonates (weight-based)
+    dosing:
+      - min_age_years: 12
+        max_age_years: null
+        dose: "500-1000 mg PO every 4-6 h"
+        max_daily: "4 g/day"
+        notes: {ar: "الجرعة الأولى ١٠٠٠ مج فعّالة أكثر للصداع", en: "First 1000 mg dose more effective for headache"}
+      - min_age_years: 0
+        max_age_years: 12
+        weight_based: true
+        dose: "15 mg/kg PO every 6 h"
+        max_daily: "75 mg/kg/day (max 4 g)"
+    indications:
+      - {ar: "ألم خفيف-متوسط", en: "Mild-moderate pain"}
+      - {ar: "حمى", en: "Fever"}
+    contraindications:
+      - {ar: "فشل كبدي معروف", en: "Known hepatic failure"}
+      - {ar: "تجنّب >٢ جرام يوميًا للمدمنين على الكحول", en: "Avoid >2 g/day in chronic alcohol users"}
+    common_interactions:
+      - {ar: "تجنّب مع الورفارين بجرعات عالية مزمنة (يزيد INR)", en: "Avoid high chronic doses with warfarin (raises INR)"}
+    sources: [BNF, Egypt MOH formulary]
+
+  - id: ibuprofen
+    generic_name: {ar: "إيبوبروفين", en: "Ibuprofen"}
+    brand_names_eg: [Brufen, Ibufen, Profinal, Megafen]
+    drug_class: nsaid
+    otc: true
+    pregnancy_category: C   # avoid 3rd trimester (D)
+    pediatric_min_age_years: 0.5  # ≥6 months
+    dosing:
+      - min_age_years: 12
+        dose: "400 mg PO every 6-8 h with food"
+        max_daily: "1200 mg/day OTC; 2400 mg/day Rx"
+      - min_age_years: 0.5
+        max_age_years: 12
+        weight_based: true
+        dose: "5-10 mg/kg PO every 6-8 h with food"
+        max_daily: "30 mg/kg/day (max 1200 mg)"
+    indications:
+      - {ar: "ألم متوسط (عضلي، صداع، أسنان)", en: "Moderate pain (MSK, headache, dental)"}
+      - {ar: "التهاب + حمى", en: "Inflammation + fever"}
+      - {ar: "ألم الدورة الشهرية", en: "Dysmenorrhea"}
+    contraindications:
+      - {ar: "قرحة معدية نشطة", en: "Active peptic ulcer"}
+      - {ar: "نزف معدي مشتبه", en: "Suspected GI bleed"}
+      - {ar: "فشل كلوي (eGFR <30)", en: "Renal failure (eGFR <30)"}
+      - {ar: "حمل (ثلث ثالث)", en: "Pregnancy (3rd trimester)"}
+      - {ar: "ربو حساس للأسبرين", en: "Aspirin-sensitive asthma"}
+      - {ar: "شك في acute abdomen (يخفي علامات الزائدة)", en: "Suspected acute abdomen (masks signs)"}
+    common_interactions:
+      - {ar: يقلل تأثير أدوية الضغط (ACE-i, ARB, diuretics), en: Blunts antihypertensives}
+      - {ar: "يزيد خطر نزف مع warfarin/aspirin/SSRI", en: "Increased bleeding risk with anticoagulants/SSRI"}
+    sources: [BNF, NICE CKS NSAIDs]
+
+  # ── Antihistamines ─────────────────────────────────────────────────
+  - id: cetirizine
+    generic_name: {ar: "سيتيريزين", en: "Cetirizine"}
+    brand_names_eg: [Zyrtec, Alerid, Cetal-allergy, Histazine]
+    drug_class: antihistamine_2nd_gen
+    otc: true
+    pregnancy_category: B
+    pediatric_min_age_years: 2
+    dosing:
+      - min_age_years: 12
+        dose: "10 mg PO once daily"
+      - min_age_years: 6
+        max_age_years: 12
+        dose: "5 mg PO once daily (or 5 mg twice daily)"
+      - min_age_years: 2
+        max_age_years: 6
+        dose: "2.5 mg PO once daily; can increase to 5 mg/day"
+    indications:
+      - {ar: "شرى وحساسية (urticaria)", en: "Urticaria"}
+      - {ar: "حساسية أنفية موسمية", en: "Allergic rhinitis"}
+      - {ar: "حكة جلدية", en: "Pruritus"}
+    contraindications:
+      - {ar: "قلّل الجرعة لو في فشل كلوي شديد", en: "Reduce dose in severe renal impairment"}
+    sources: [BNF, NICE CKS Urticaria]
+
+  - id: loratadine
+    generic_name: {ar: "لوراتادين", en: "Loratadine"}
+    brand_names_eg: [Claritine, Lorano, Lorastine]
+    drug_class: antihistamine_2nd_gen
+    otc: true
+    pregnancy_category: B
+    pediatric_min_age_years: 2
+    dosing:
+      - min_age_years: 6
+        dose: "10 mg PO once daily"
+      - min_age_years: 2
+        max_age_years: 6
+        dose: "5 mg PO once daily"
+    indications:
+      - {ar: "حساسية أنفية", en: "Allergic rhinitis"}
+      - {ar: "شرى مزمن", en: "Chronic urticaria"}
+    contraindications:
+      - {ar: "قلّل لو فشل كبدي", en: "Reduce in hepatic impairment"}
+    sources: [BNF]
+
+  # ── GI ─────────────────────────────────────────────────────────────
+  - id: omeprazole
+    generic_name: {ar: "أوميبرازول", en: "Omeprazole"}
+    brand_names_eg: [Omez, Gastroloc, Risek, Losec, Antocid]
+    drug_class: ppi
+    otc: true  # 20 mg OTC in Egypt
+    pregnancy_category: C
+    pediatric_min_age_years: 1
+    dosing:
+      - min_age_years: 18
+        dose: "20 mg PO once daily 30 min before breakfast"
+        max_daily: "40 mg/day"
+        notes: {ar: "لا تزيد من ١٤ يوم بدون طبيب", en: "Do not exceed 14 days without clinician"}
+    indications:
+      - {ar: "ارتجاع المريء (GERD)", en: "GERD"}
+      - {ar: "التهاب معدة / قرحة", en: "Gastritis / peptic ulcer"}
+      - {ar: "عسر هضم وظيفي", en: "Functional dyspepsia"}
+    contraindications:
+      - {ar: "حذر مع clopidogrel (يقلل فاعليته)", en: "Caution with clopidogrel (reduces efficacy)"}
+    common_interactions:
+      - {ar: يقلل امتصاص بعض الأدوية (ketoconazole, itraconazole), en: Reduces absorption of certain drugs}
+    sources: [BNF, NICE CKS Dyspepsia]
+
+  - id: loperamide
+    generic_name: {ar: "لوبيراميد", en: "Loperamide"}
+    brand_names_eg: [Imodium, Lopex, Diarol]
+    drug_class: antidiarrheal
+    otc: true
+    pregnancy_category: C
+    pediatric_min_age_years: 12
+    dosing:
+      - min_age_years: 12
+        dose: "4 mg loading then 2 mg after each loose stool"
+        max_daily: "16 mg/day"
+        notes: {ar: "لمدة ٤٨ ساعة بحد أقصى للاستخدام OTC", en: "Max 48 h OTC use"}
+    indications:
+      - {ar: "إسهال غير معقد", en: "Uncomplicated diarrhea"}
+    contraindications:
+      - {ar: "⛔ ممنوع لو في دم في البراز", en: "Contraindicated if bloody stool"}
+      - {ar: "⛔ ممنوع لو حرارة فوق ٣٨.٥", en: "Contraindicated if fever >38.5°C"}
+      - {ar: "⛔ ممنوع لطفل أقل من ١٢ سنة (مخاطر قلبية)", en: "Contraindicated <12 years (cardiac risk)"}
+      - {ar: "⛔ ممنوع في C. difficile suspected", en: "Contraindicated in suspected C. difficile"}
+    sources: [BNF, FDA black box]
+
+  - id: ors
+    generic_name: {ar: "محلول معالجة الجفاف (ORS)", en: "Oral rehydration solution (ORS)"}
+    brand_names_eg: [Rehydran, Hydrosafe, Pedialyte]
+    drug_class: electrolyte
+    otc: true
+    pregnancy_category: A
+    pediatric_min_age_years: 0
+    dosing:
+      - min_age_years: 12
+        dose: "200 ml after each loose stool / vomit; sip continuously if dehydrated"
+      - min_age_years: 0
+        max_age_years: 12
+        weight_based: true
+        dose: "50-100 ml/kg over 4 h for mild-moderate dehydration"
+        notes: {ar: "استخدم WHO low-osmolarity ORS", en: "Use WHO low-osmolarity formulation"}
+    indications:
+      - {ar: "علاج وجفاف الإسهال والقيء", en: "Treatment of dehydration from diarrhea/vomiting"}
+    sources: [WHO ORS guidelines]
+
+  # ── Respiratory / cough ────────────────────────────────────────────
+  - id: dextromethorphan
+    generic_name: {ar: "ديكستروميثورفان", en: "Dextromethorphan"}
+    brand_names_eg: [Tussidex, Toplexil DMS, Notussil]
+    drug_class: antitussive
+    otc: true
+    pregnancy_category: C
+    pediatric_min_age_years: 4
+    dosing:
+      - min_age_years: 12
+        dose: "10-20 mg PO every 4 h or 30 mg every 6-8 h"
+        max_daily: "120 mg/day"
+      - min_age_years: 6
+        max_age_years: 12
+        dose: "5-10 mg PO every 4 h"
+        max_daily: "60 mg/day"
+    indications:
+      - {ar: "كحة جافة مزعجة", en: "Dry persistent cough"}
+    contraindications:
+      - {ar: "⛔ ممنوع مع SSRIs / MAOIs (Serotonin syndrome)", en: "Contraindicated with SSRIs/MAOIs"}
+      - {ar: "⛔ ممنوع لطفل أقل من ٤ سنوات", en: "Contraindicated <4 years"}
+    sources: [BNF, FDA]
+
+  # ── Topicals ───────────────────────────────────────────────────────
+  - id: hydrocortisone_topical
+    generic_name: {ar: "هيدروكورتيزون موضعي ١٪", en: "Hydrocortisone 1% topical"}
+    brand_names_eg: [Cortizone, Hydrocort, Dermacort]
+    drug_class: topical_corticosteroid_mild
+    otc: true
+    pregnancy_category: B
+    pediatric_min_age_years: 2
+    dosing:
+      - min_age_years: 2
+        dose: "Thin layer applied to affected area twice daily"
+        max_daily: "Do not exceed 5-7 days OTC"
+        notes: {ar: "تجنّب الوجه والمنطقة التناسلية >٥ أيام", en: "Avoid face + groin for >5 days"}
+    indications:
+      - {ar: "التهاب جلد تلامسي / إكزيما خفيفة", en: "Contact dermatitis / mild eczema"}
+      - {ar: "حكة موضعية", en: "Localized pruritus"}
+    contraindications:
+      - {ar: "لا تستخدم مع عدوى فطرية أو بكتيرية", en: "Do not use on infected skin"}
+      - {ar: "تجنّب على فروة الراس مفتوحة", en: "Avoid on broken scalp"}
+    sources: [BNF, NICE CKS Eczema]
+
+  # ── Emergency (for the playbook reference, NOT self-care) ──────────
+  - id: aspirin_emergency
+    generic_name: {ar: "أسبرين (مضغ في حالة طوارئ قلبية)", en: "Aspirin (chew in cardiac emergency)"}
+    brand_names_eg: [Aspocid, Aspirin Bayer, Rivo]
+    drug_class: antiplatelet_emergency
+    otc: true
+    pregnancy_category: C
+    pediatric_min_age_years: 18  # never to children (Reye syndrome)
+    dosing:
+      - min_age_years: 18
+        dose: "300 mg CHEW (not swallow) once during suspected cardiac chest pain"
+        notes:
+          ar: |
+            استخدام طارئ فقط — لمضغها لحظة الاتصال بالإسعاف لو الشك في جلطة قلب
+            ولا توجد حساسية أو نزف معدي معروف. ليس لـ self-care الروتيني.
+          en: |
+            EMERGENCY USE ONLY — chew it at the moment of calling EMS for
+            suspected cardiac chest pain, if no allergy and no known GI bleed.
+            NOT for routine self-care.
+    indications:
+      - {ar: "اشتباه جلطة قلب — لحظة الاتصال بالإسعاف", en: "Suspected MI — at moment of calling EMS"}
+    contraindications:
+      - {ar: "⛔ لا للأطفال (متلازمة راي)", en: "NEVER to children (Reye's syndrome)"}
+      - {ar: "⛔ حساسية للأسبرين", en: "Aspirin allergy"}
+      - {ar: "⛔ نزف معدي نشط", en: "Active GI bleeding"}
+      - {ar: "⛔ نزف معروف أو اضطراب تخثر", en: "Bleeding diathesis"}
+    sources: [AHA ACS guidelines]

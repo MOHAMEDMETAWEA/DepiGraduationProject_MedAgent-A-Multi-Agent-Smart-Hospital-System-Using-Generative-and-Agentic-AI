@@ -1,0 +1,142 @@
+id: cough
+name:
+  ar: السعال
+  en: Cough
+category: respiratory
+age_range: adult
+
+synonyms:
+  - cough
+  - persistent cough
+  - dry cough
+  - productive cough
+  - كحة
+  - سعال
+  - كحة جافة
+  - كحة بلغم
+  - كحة مستمرة
+
+red_flags:
+  - question:
+      ar: هل في دم في البلغم أو كحة دموية؟
+      en: Coughing up blood or blood-streaked sputum?
+    severity: emergency
+    rationale: Hemoptysis — PE / TB / malignancy / severe pneumonia screen.
+  - question:
+      ar: هل في ضيق نفس شديد، تنفس سريع >٣٠ في الدقيقة، أو زرقة في الشفايف؟
+      en: Severe dyspnea, RR >30, or cyanosis?
+    severity: emergency
+    rationale: Acute respiratory distress.
+  - question:
+      ar: هل بدأت الكحة فجأة بعد استنشاق جسم غريب أو طعام؟
+      en: Sudden onset after inhaling food / foreign object?
+    severity: emergency
+    rationale: Foreign body aspiration.
+  - question:
+      ar: هل استمرّت الكحة أكثر من ٣ أسابيع بدون تحسّن؟
+      en: Cough lasting >3 weeks without improvement?
+    severity: urgent
+    rationale: Chronic cough — TB / lung cancer / asthma screen needed.
+  - question:
+      ar: هل عندك فقدان وزن غير مبرّر أو تعرّق ليلي غزير؟
+      en: Unexplained weight loss or drenching night sweats?
+    severity: urgent
+    rationale: B symptoms — TB / lymphoma / malignancy.
+
+differentials:
+  - name: {ar: "عدوى فيروسية للجهاز التنفسي العلوي", en: "Viral URI"}
+    likelihood: very_common
+    key_features:
+      - {ar: "كحة جافة + رشح + التهاب حلق", en: "Dry cough + runny nose + sore throat"}
+      - {ar: "حرارة خفيفة + ألم عضلي", en: "Low-grade fever + myalgia"}
+      - {ar: "تتحسّن خلال ٧-١٠ أيام", en: "Resolves in 7-10 days"}
+    icd10: J06.9
+  - name: {ar: "التهاب شعبي حاد", en: "Acute bronchitis"}
+    likelihood: common
+    key_features:
+      - {ar: "كحة منتجة لأكثر من ٥ أيام", en: "Productive cough >5 days"}
+      - {ar: "أزيز خفيف بدون حرارة عالية", en: "Mild wheeze, no high fever"}
+    icd10: J20.9
+  - name: {ar: "التهاب رئوي", en: "Pneumonia"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "حرارة >٣٨.٥ + ضيق نفس + ألم صدر طاعن", en: "Fever >38.5 + dyspnea + pleuritic pain"}
+      - {ar: "كحة منتجة بلغم أصفر/أخضر", en: "Productive purulent cough"}
+    icd10: J18.9
+  - name: {ar: "ربو / أزمة ربوية", en: "Asthma / exacerbation"}
+    likelihood: common
+    key_features:
+      - {ar: "أزيز + ضيق نفس مع المجهود", en: "Wheeze + exertional dyspnea"}
+      - {ar: "تسوء ليلًا وفي البرد", en: "Worse at night and in cold"}
+      - {ar: "تاريخ حساسية أو أكزيما", en: "Atopy / eczema history"}
+    icd10: J45
+  - name: {ar: "ارتجاع المريء (سبب مزمن)", en: "GERD-related cough"}
+    likelihood: common
+    key_features:
+      - {ar: "كحة جافة بعد الأكل أو بالليل", en: "Dry cough after meals or at night"}
+      - {ar: "حرقة + طعم مر بالحلق", en: "Heartburn + acid taste"}
+    icd10: K21
+  - name: {ar: "سل (TB)", en: "Tuberculosis"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "كحة >٣ أسابيع + تعرّق ليلي + فقدان وزن", en: "Cough >3 wk + night sweats + weight loss"}
+      - {ar: "مخالطة لمريض سل", en: "TB contact"}
+    icd10: A15
+
+followup_questions:
+  - field_id: duration
+    question: {ar: "من امتى الكحة بدأت؟", en: "How long has the cough been present?"}
+    relevance: always
+  - field_id: sputum_color
+    question: {ar: "جافة ولا معاها بلغم؟ لون البلغم إيه؟", en: "Dry or productive? If productive, sputum color?"}
+    relevance: always
+  - field_id: fever
+    question: {ar: "في حرارة معاها؟ كام تحديدًا؟", en: "Any fever? What's the highest temperature?"}
+    relevance: always
+  - field_id: smoking
+    question: {ar: "مدخّن؟ من إمتى؟", en: "Smoker? How long?"}
+    relevance: if_no_red_flag
+  - field_id: tb_contact
+    question: {ar: "في حد عندك في البيت أو الشغل عنده سل أو كحة مستمرة؟", en: "Anyone at home or work with TB or chronic cough?"}
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: paracetamol
+    instruction:
+      ar: لو معاها حرارة، باراسيتامول ٥٠٠-١٠٠٠ مج كل ٦ ساعات (max 4 g/day).
+      en: If febrile, paracetamol 500-1000 mg PO every 6h (max 4g/day).
+    duration: 3 days
+  - drug_id: ""
+    instruction:
+      ar: شرب سوائل دافئة (٢-٣ لتر/يوم)، استنشاق بخار، عسل (ملعقة كبيرة قبل النوم — للبالغين فقط، ممنوع لطفل أقل من سنة).
+      en: Warm fluids (2-3 L/day), steam inhalation, honey (1 tbsp at bedtime — adults only, contraindicated <1 year).
+    duration: until cough resolves
+  - drug_id: dextromethorphan
+    instruction:
+      ar: لو كحة جافة مزعجة بالليل، شراب ديكستروميثورفان حسب التعليمات على العبوة.
+      en: For dry nocturnal cough, dextromethorphan syrup per label.
+    duration: 3-5 days
+    contraindications:
+      - {ar: "تجنّب لو على مضادات اكتئاب SSRI/MAOI", en: "Avoid if on SSRIs / MAOIs"}
+      - {ar: "ممنوع لطفل أقل من ٤ سنوات", en: "Contraindicated <4 years"}
+
+workup:
+  - name: {ar: "أشعة سينية على الصدر", en: "Chest X-ray"}
+    indication: {ar: "استمرار >٣ أسابيع أو أعراض مقلقة", en: "Persistent >3 wk or red flags"}
+    priority: urgent
+  - name: {ar: "مسحة بلغم للسل", en: "Sputum AFB / GeneXpert"}
+    indication: {ar: "لو شك في سل", en: "If TB suspected"}
+    priority: urgent
+
+when_to_escalate:
+  - {ar: "دم في البلغم", en: "Blood in sputum"}
+  - {ar: "ضيق نفس جديد أو متزايد", en: "New or worsening shortness of breath"}
+  - {ar: "ألم صدر شديد", en: "Severe chest pain"}
+  - {ar: "حرارة فوق ٣٩ مع رعشة شديدة", en: "Fever >39°C with rigors"}
+  - {ar: "كحة استمرّت >٣ أسابيع", en: "Cough persisting >3 weeks"}
+
+sources:
+  - https://cks.nice.org.uk/topics/cough/
+  - https://www.nice.org.uk/guidance/ng80  # Asthma
+
+needs_clinical_review: true

@@ -1,7 +1,0 @@
-[flake8]
-max-line-length = 88
-extend-ignore = E501,E402,W291,W293,F401,E711,E712,E741,F841
-per-file-ignores =
-    tests/*: F821
-    archive/*: F821
-    maintenance/*: F821

@@ -1,0 +1,136 @@
+id: skin_rash
+name: {ar: "الطفح الجلدي", en: "Skin rash"}
+category: derm
+age_range: adult
+
+synonyms:
+  - rash
+  - skin rash
+  - hives
+  - itchy skin
+  - urticaria
+  - allergic reaction
+  - طفح جلدي
+  - حساسية جلد
+  - حكة
+  - طفح
+  - شرى
+  - حمى الحساسية
+
+red_flags:
+  - question:
+      ar: هل في تورّم في الوجه أو الشفايف أو اللسان، أو ضيق نفس مع الطفح؟
+      en: Facial / lip / tongue swelling, or shortness of breath with the rash?
+    severity: emergency
+    rationale: Anaphylaxis — needs adrenaline now.
+  - question:
+      ar: هل الطفح لا يختفي عند الضغط بكوب زجاج عليه؟
+      en: Non-blanching rash (stays under glass pressure)?
+    severity: emergency
+    rationale: Purpura — meningococcal sepsis / vasculitis / thrombocytopenia.
+  - question:
+      ar: هل ينتشر الطفح بسرعة مع تقشّر الجلد وألم شديد؟
+      en: Rapidly spreading with skin peeling and severe pain?
+    severity: emergency
+    rationale: Stevens-Johnson / TEN — drug-induced severe.
+  - question:
+      ar: هل الطفح بدأ بعد ساعات قليلة من دواء جديد؟
+      en: Started within hours of a new medication?
+    severity: urgent
+    rationale: Drug reaction — stop drug + evaluate.
+
+differentials:
+  - name: {ar: "شرى / حساسية حادة (Urticaria)", en: "Acute urticaria"}
+    likelihood: very_common
+    key_features:
+      - {ar: "حبوب حمراء مرتفعة مع حكة", en: "Raised red wheals + itching"}
+      - {ar: "تظهر وتختفي خلال ساعات", en: "Migrate over hours"}
+      - {ar: "قد يصاحبها انتفاخ خفيف", en: "Often with mild angioedema"}
+    icd10: L50
+  - name: {ar: "التهاب جلد تلامسي / إكزيما", en: "Contact dermatitis / eczema"}
+    likelihood: common
+    key_features:
+      - {ar: "حكة + احمرار + قشور", en: "Itching + erythema + scaling"}
+      - {ar: "مرتبط بمادة معينة (صابون، مادة كيميائية)", en: "Linked to specific substance"}
+    icd10: L23/L20
+  - name: {ar: "طفح فيروسي (نزلة برد، حصبة، حماق)", en: "Viral exanthem"}
+    likelihood: common
+    key_features:
+      - {ar: "حرارة سبقت الطفح بأيام", en: "Fever preceded rash"}
+      - {ar: "ينتشر من الجذع للأطراف", en: "Spreads trunk → extremities"}
+    icd10: B09
+  - name: {ar: "التهاب جلد دهني", en: "Seborrheic dermatitis"}
+    likelihood: common
+    key_features:
+      - {ar: "قشور دهنية صفراء في فروة الراس والحاجبين", en: "Greasy yellow scales on scalp/eyebrows"}
+    icd10: L21
+  - name: {ar: "عدوى فطرية (Tinea)", en: "Tinea / dermatophyte"}
+    likelihood: common
+    key_features:
+      - {ar: "حلقة محمرة بحواف واضحة", en: "Ring-shaped lesion with clear border"}
+      - {ar: "حكة شديدة في المنطقة", en: "Severe localized itching"}
+    icd10: B35
+
+followup_questions:
+  - field_id: rash_location
+    question: {ar: "ظهر فين بالظبط؟ منتشر ولا في مكان محدد؟", en: "Where exactly? Localized or widespread?"}
+    relevance: always
+  - field_id: rash_character
+    question: {ar: "حبوب مرتفعة، بقع مسطّحة، فقاعات، قشور؟", en: "Raised, flat, blistering, scaly?"}
+    relevance: always
+  - field_id: itching
+    question: {ar: "حكة قوية، خفيفة، أو لا حكة؟", en: "Itching — severe, mild, or none?"}
+    relevance: always
+  - field_id: new_exposures
+    question: {ar: "دواء جديد، صابون، طعام، أو نبات لمسته قبل ما يظهر؟", en: "New medication, soap, food, or plant contact?"}
+    relevance: always
+  - field_id: fever
+    question: {ar: "في حرارة معاه؟", en: "Any fever with the rash?"}
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: cetirizine
+    instruction:
+      ar: سيتيريزين ١٠ مج مرة يوميًا (أو لوراتادين ١٠ مج) لتقليل الحكة. الأقل تسبّبًا للنعاس بين مضادات الهيستامين.
+      en: Cetirizine 10 mg once daily (or loratadine 10 mg) for itching. Least-sedating antihistamine.
+    duration: 7-10 days
+    contraindications:
+      - {ar: "قلّل الجرعة لو في فشل كلوي", en: "Reduce dose if renal impairment"}
+  - drug_id: ""
+    instruction:
+      ar: تجنّب المسبّب لو معروف. كمادات باردة على المنطقة ١٥ دقيقة. تجنّب الحكة (تزيد المشكلة).
+      en: Avoid trigger if known. Cold compress 15 min. Avoid scratching (worsens).
+    duration: until resolved
+  - drug_id: ""
+    instruction:
+      ar: كريم مرطّب خالٍ من العطور (مثل سيتافيل) ٢-٣ مرات يوميًا.
+      en: Fragrance-free emollient (e.g. Cetaphil) 2-3x daily.
+    duration: ongoing
+  - drug_id: hydrocortisone_topical
+    instruction:
+      ar: كريم هيدروكورتيزون ١٪ موضعي مرتين يوميًا للحكة الموضعية (تجنّب الوجه + الفخذين لأكثر من ٥ أيام).
+      en: Hydrocortisone 1% cream BID for localized itching (avoid face + groin >5 days).
+    duration: 5-7 days max OTC
+    contraindications:
+      - {ar: "تجنّب لو في عدوى فطرية أو بكتيرية مشتبهة", en: "Avoid if suspected fungal/bacterial infection"}
+
+workup:
+  - name: {ar: "تعداد دم كامل", en: "CBC"}
+    indication: {ar: "لو شك في طفح بكتيري شديد", en: "If severe infectious rash"}
+    priority: routine
+  - name: {ar: "مسحة من المنطقة", en: "Skin swab / scraping"}
+    indication: {ar: "لو شك في فطريات أو بكتيريا", en: "If fungal/bacterial infection suspected"}
+    priority: routine
+
+when_to_escalate:
+  - {ar: "تورّم في الوجه أو ضيق نفس", en: "Facial swelling or breathing difficulty"}
+  - {ar: "طفح لا يختفي بالضغط (سحائي)", en: "Non-blanching rash (meningococcal)"}
+  - {ar: "تقشّر شديد في الجلد مع ألم", en: "Severe skin peeling with pain"}
+  - {ar: "حرارة عالية مع الطفح المنتشر", en: "High fever with spreading rash"}
+  - {ar: "عدم تحسّن بعد ٧-١٠ أيام", en: "No improvement after 7-10 days"}
+
+sources:
+  - https://cks.nice.org.uk/topics/urticaria/
+  - https://cks.nice.org.uk/topics/eczema-contact/
+
+needs_clinical_review: true

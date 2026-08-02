@@ -1,0 +1,161 @@
+id: abdominal_pain
+name: {ar: "ألم البطن", en: "Abdominal pain"}
+category: gi
+age_range: adult
+
+synonyms:
+  - abdominal pain
+  - stomach pain
+  - belly pain
+  - tummy pain
+  - ألم بطن
+  - ألم معدة
+  - مغص
+  - وجع بطن
+  - وجع معدة
+
+red_flags:
+  - question:
+      ar: هل البطن صلب ومتيبّس ومؤلم لمجرد لمسه (peritonism)؟
+      en: Rigid, board-like abdomen with rebound tenderness?
+    severity: emergency
+    rationale: Peritonitis — possible perforation / appendicitis with rupture.
+  - question:
+      ar: هل الألم في الجزء الأيمن السفلي من البطن مع غثيان وحرارة؟
+      en: Right-lower-quadrant pain with nausea and fever?
+    severity: emergency
+    rationale: Acute appendicitis (McBurney's point).
+  - question:
+      ar: هل في قيء دموي أو براز أسود (قطراني) أو دموي؟
+      en: Hematemesis, melena, or bloody stool?
+    severity: emergency
+    rationale: Upper / lower GI bleeding.
+  - question:
+      ar: هل أنتي حامل وعندك ألم بطن شديد مع نزيف؟
+      en: Pregnant with severe abdo pain + bleeding?
+    severity: emergency
+    rationale: Ectopic / abruption — needs emergency OBGYN.
+  - question:
+      ar: هل الألم شديد وفجائي ومستمر بدون تحسّن لأكثر من ٦ ساعات؟
+      en: Severe, sudden, constant pain >6 h without relief?
+    severity: emergency
+    rationale: Surgical abdomen until proven otherwise.
+
+differentials:
+  - name: {ar: "التهاب معدي معوي فيروسي", en: "Viral gastroenteritis"}
+    likelihood: very_common
+    key_features:
+      - {ar: "مغص + إسهال + غثيان", en: "Cramping + diarrhea + nausea"}
+      - {ar: "حرارة خفيفة", en: "Low-grade fever"}
+      - {ar: "مخالطة لشخص مريض", en: "Sick contact"}
+    icd10: A09
+  - name: {ar: "ارتجاع المريء / التهاب معدة", en: "GERD / gastritis"}
+    likelihood: very_common
+    key_features:
+      - {ar: "حرقة خلف القص أو في الجزء العلوي من البطن", en: "Burning epigastric pain"}
+      - {ar: "يسوء بعد الأكل أو ليلاً", en: "Worse after meals / at night"}
+      - {ar: "يتحسن بمضادات الحموضة", en: "Relieved by antacids"}
+    icd10: K21
+  - name: {ar: "التهاب الزائدة الدودية", en: "Appendicitis"}
+    likelihood: emergency
+    key_features:
+      - {ar: "ألم بدأ حول السرة وانتقل لأسفل اليمين", en: "Periumbilical pain migrating to RLQ"}
+      - {ar: "غثيان وفقدان شهية", en: "Nausea + anorexia"}
+      - {ar: "حرارة منخفضة + ألم عند الضغط", en: "Low-grade fever + McBurney tenderness"}
+    icd10: K35
+  - name: {ar: "حصوة في المرارة / التهاب مرارة", en: "Cholelithiasis / cholecystitis"}
+    likelihood: common
+    key_features:
+      - {ar: "ألم تحت الضلوع اليمنى يمتد للظهر أو الكتف الأيمن", en: "RUQ pain radiating to back/right shoulder"}
+      - {ar: "يسوء بعد الأكل الدسم", en: "Worse after fatty meals"}
+      - {ar: "قيء وغثيان", en: "Vomiting + nausea"}
+    icd10: K80
+  - name: {ar: "حصوة كلى", en: "Renal colic"}
+    likelihood: common
+    key_features:
+      - {ar: "ألم خاصرة شديد متموج", en: "Severe flank pain, colicky"}
+      - {ar: "ينتشر للأمام والخصية/فخذ", en: "Radiation to groin"}
+      - {ar: "دم في البول", en: "Hematuria"}
+    icd10: N20
+  - name: {ar: "قولون عصبي (IBS)", en: "Irritable bowel syndrome"}
+    likelihood: common
+    key_features:
+      - {ar: "ألم بطن متكرر يتحسّن بعد التبرّز", en: "Recurrent pain relieved by defecation"}
+      - {ar: "تغيّر في عادات الإخراج", en: "Altered bowel habits"}
+      - {ar: "مرتبط بالضغط النفسي", en: "Linked to stress"}
+    icd10: K58
+  - name: {ar: "قرحة معدة / اثني عشر", en: "Peptic ulcer disease"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "ألم حارق في الجزء العلوي يخف بالأكل (اثني عشر) أو يسوء (معدة)", en: "Burning epigastric pain — relieved (DU) or worse (GU) with food"}
+      - {ar: "استخدام NSAIDs مزمن", en: "Chronic NSAID use"}
+    icd10: K27
+
+followup_questions:
+  - field_id: pain_location
+    question: {ar: "ألم في أي منطقة بالظبط؟ (يمين/يسار، فوق/تحت السرة)", en: "Exactly where? (Q1-4, epigastric, periumbilical, suprapubic)"}
+    relevance: always
+  - field_id: pain_character
+    question: {ar: "ألم متموج (يخف ويرجع) ولا مستمر؟ حاد ولا حارق؟", en: "Colicky vs constant? Sharp vs burning?"}
+    relevance: always
+  - field_id: relation_to_food
+    question: {ar: "علاقة بالأكل؟ يسوء بعد الأكل ولا يخف؟", en: "Relation to meals? Worse vs better?"}
+    relevance: always
+  - field_id: bowel_habits
+    question: {ar: "تغيّر في الإخراج (إسهال، إمساك، دم، لون أسود)؟", en: "Change in stool (diarrhea, constipation, blood, melena)?"}
+    relevance: always
+  - field_id: vomiting
+    question: {ar: "في قيء؟ كام مرة؟ في دم؟", en: "Vomiting? How often? Any blood?"}
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: paracetamol
+    instruction:
+      ar: باراسيتامول ٥٠٠-١٠٠٠ مج كل ٦ ساعات. لا تأخذ بروفين أو NSAIDs لو الشك في acute abdomen أو نزف.
+      en: Paracetamol 500-1000 mg PO every 6h. AVOID NSAIDs if acute abdomen or GI bleeding suspected.
+    duration: max 48 h, then reassess
+    contraindications:
+      - {ar: "لا NSAIDs لو الشك في التهاب زائدة", en: "No NSAIDs if appendicitis suspected — they mask peritoneal signs"}
+  - drug_id: omeprazole
+    instruction:
+      ar: لو الألم حارق علوي ومن نمط GERD/gastritis، أوميبرازول ٢٠ مج قبل الفطار بنصف ساعة.
+      en: For upper burning pain consistent with GERD/gastritis, omeprazole 20 mg before breakfast.
+    duration: 14 days OTC; longer needs doctor
+  - drug_id: ""
+    instruction:
+      ar: محلول معالجة الجفاف (ORS) لو إسهال أو قيء. ٢٠٠ مل بعد كل نوبة. تجنّب الحليب والأطعمة الدسمة ٤٨ ساعة.
+      en: ORS for diarrhea/vomiting — 200 ml after each episode. Avoid dairy + fatty foods for 48 h.
+    duration: until symptoms resolve
+  - drug_id: ""
+    instruction:
+      ar: نوم على الجنب الأيمن مع ثني الركبتين لو الألم في الجزء السفلي الأيمن — قبل ما تروح المستشفى.
+      en: Lie on the right side with knees flexed for RLQ pain — interim positioning before ER.
+    duration: while awaiting evaluation
+
+workup:
+  - name: {ar: "تعداد دم كامل + CRP", en: "CBC + CRP"}
+    indication: {ar: "مؤشر التهاب / عدوى", en: "Inflammation / infection marker"}
+    priority: routine
+  - name: {ar: "تحليل بول", en: "Urinalysis"}
+    indication: {ar: "لاستبعاد UTI أو حصوة", en: "Rule out UTI / renal stone"}
+    priority: routine
+  - name: {ar: "أشعة موجات صوتية على البطن", en: "Abdominal ultrasound"}
+    indication: {ar: "لتقييم المرارة / الزائدة / الكلى", en: "Evaluate gallbladder / appendix / kidneys"}
+    priority: urgent
+  - name: {ar: "أشعة مقطعية على البطن", en: "Abdominal CT"}
+    indication: {ar: "لو شك في acute abdomen", en: "Suspected surgical abdomen"}
+    priority: emergent
+
+when_to_escalate:
+  - {ar: "ألم مفاجئ شديد ومستمر >٦ ساعات", en: "Sudden severe pain lasting >6 h"}
+  - {ar: "قيء دموي أو براز أسود / دموي", en: "Hematemesis or melena/hematochezia"}
+  - {ar: "بطن متيبّس مع ألم لمجرد اللمس", en: "Rigid abdomen with rebound tenderness"}
+  - {ar: "حمى >٣٨.٥ مع ألم بطن", en: "Fever >38.5°C with abdominal pain"}
+  - {ar: "ألم انتقل من السرة لأسفل اليمين", en: "Pain migrating from umbilicus to RLQ"}
+  - {ar: "عدم القدرة على التبرّز مع انتفاخ + قيء", en: "Inability to pass stool + distension + vomiting (obstruction)"}
+
+sources:
+  - https://cks.nice.org.uk/topics/abdominal-pain/
+  - https://cks.nice.org.uk/topics/dyspepsia-unidentified-cause/
+
+needs_clinical_review: true

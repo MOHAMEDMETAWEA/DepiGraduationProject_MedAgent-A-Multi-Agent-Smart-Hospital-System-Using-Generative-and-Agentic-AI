@@ -1,0 +1,133 @@
+id: diarrhea
+name: {ar: "الإسهال", en: "Diarrhea"}
+category: gi
+age_range: adult
+
+synonyms:
+  - diarrhea
+  - diarrhoea
+  - loose stool
+  - watery stool
+  - إسهال
+  - برد على المعدة
+  - تعب في المعدة
+  - تكرار التبرّز
+
+red_flags:
+  - question:
+      ar: هل في دم أو مخاط في البراز؟
+      en: Blood or mucus in the stool?
+    severity: emergency
+    rationale: Bloody diarrhea — invasive bacterial (Shigella, EHEC) or IBD flare.
+  - question:
+      ar: هل في علامات جفاف شديد (دوخة عند الوقوف، قلة بول، فم جاف، نبض سريع)؟
+      en: Severe dehydration signs (orthostatic dizziness, oliguria, dry mouth, tachycardia)?
+    severity: emergency
+    rationale: Volume depletion needs IV fluids.
+  - question:
+      ar: هل الإسهال غزير (>٦ مرات/يوم) لأكثر من ٤٨ ساعة مع حرارة >٣٨.٥؟
+      en: "≥6 stools/day for >48 h with fever >38.5°C?"
+    severity: urgent
+    rationale: Severe bacterial gastroenteritis — needs evaluation + possible antibiotics.
+  - question:
+      ar: هل عمرك فوق ٦٥، أو ضعف مناعة، أو عدت من سفر مؤخراً؟
+      en: Age >65, immunocompromised, or recent travel?
+    severity: urgent
+    rationale: Higher risk — needs earlier evaluation.
+
+differentials:
+  - name: {ar: "التهاب معدي معوي فيروسي", en: "Viral gastroenteritis"}
+    likelihood: very_common
+    key_features:
+      - {ar: "إسهال مائي + قيء + حرارة خفيفة", en: "Watery diarrhea + vomiting + low-grade fever"}
+      - {ar: "يستمر ٢-٥ أيام", en: "Lasts 2-5 days"}
+      - {ar: "مخالطة لشخص مصاب", en: "Sick contacts"}
+    icd10: A08.4
+  - name: {ar: "تسمم غذائي", en: "Food poisoning"}
+    likelihood: common
+    key_features:
+      - {ar: "بدأ ٢-١٢ ساعة بعد أكل معين", en: "Onset 2-12 h after specific meal"}
+      - {ar: "قيء سابق للإسهال", en: "Vomiting preceding diarrhea"}
+    icd10: A05
+  - name: {ar: "التهاب بكتيري (Salmonella/Shigella/EHEC)", en: "Bacterial enteritis"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "دم أو مخاط في البراز", en: "Blood or mucus"}
+      - {ar: "حرارة عالية + مغص شديد", en: "High fever + severe cramping"}
+    icd10: A04
+  - name: {ar: "عدوى Clostridium difficile (بعد مضادات حيوية)", en: "C. difficile colitis"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "إسهال بعد مضاد حيوي حديث", en: "Diarrhea after recent antibiotic course"}
+      - {ar: "رائحة كريهة مميزة", en: "Foul-smelling stools"}
+    icd10: A04.7
+  - name: {ar: "التهاب القولون التقرّحي / كرون (شك في IBD)", en: "IBD flare"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "إسهال دموي مزمن متكرر", en: "Chronic recurrent bloody diarrhea"}
+      - {ar: "ألم بطن + فقدان وزن", en: "Abdominal pain + weight loss"}
+    icd10: K50/K51
+
+followup_questions:
+  - field_id: stool_frequency
+    question: {ar: "كام مرة في اليوم؟", en: "How many bowel movements per day?"}
+    relevance: always
+  - field_id: stool_blood
+    question: {ar: "في دم أو مخاط في البراز؟", en: "Any blood or mucus?"}
+    relevance: always
+  - field_id: hydration
+    question: {ar: "بتشرب مياه كويس؟ بتلاحظ قلة البول أو دوخة لما تقوم؟", en: "Are you drinking? Less urine? Dizziness on standing?"}
+    relevance: always
+  - field_id: recent_antibiotics
+    question: {ar: "أخدت مضاد حيوي في آخر ٨ أسابيع؟", en: "Antibiotics in the past 8 weeks?"}
+    relevance: if_no_red_flag
+  - field_id: travel
+    question: {ar: "سافرت مؤخراً؟", en: "Recent travel?"}
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: ""
+    instruction:
+      ar: محلول معالجة الجفاف (ORS) — تحضير كيس في لتر مياه نظيف، شرب ٢٠٠ مل بعد كل نوبة إسهال أو قيء.
+      en: Oral rehydration solution (ORS) — mix 1 sachet in 1 L clean water, drink 200 ml after each diarrhea/vomit episode.
+    duration: until diarrhea resolves
+  - drug_id: ""
+    instruction:
+      ar: نظام BRAT (موز، أرز، تفاح مهروس، توست) لمدة ٤٨ ساعة. تجنّب الحليب، الدهون، والقهوة.
+      en: BRAT diet (banana, rice, applesauce, toast) for 48 h. Avoid dairy, fatty foods, coffee.
+    duration: 48-72 h
+  - drug_id: loperamide
+    instruction:
+      ar: لوبيراميد ٤ مج جرعة بدء ثم ٢ مج بعد كل إسهال (max ١٦ مج/يوم). لا تستخدمه لو في دم أو حرارة عالية.
+      en: Loperamide 4 mg loading then 2 mg after each loose stool (max 16 mg/day). DO NOT use if bloody diarrhea or high fever.
+    duration: max 48 h OTC
+    contraindications:
+      - {ar: "ممنوع لو في دم بالبراز", en: "Avoid if bloody stool"}
+      - {ar: "ممنوع لو حرارة فوق ٣٨.٥", en: "Avoid if fever >38.5°C"}
+      - {ar: "ممنوع للأطفال أقل من ١٢ سنة", en: "Contraindicated <12 years"}
+  - drug_id: paracetamol
+    instruction:
+      ar: لو حرارة أو مغص خفيف، باراسيتامول ٥٠٠-١٠٠٠ مج كل ٦ ساعات.
+      en: For fever or mild cramping, paracetamol 500-1000 mg every 6h.
+    duration: as needed
+
+workup:
+  - name: {ar: "تحليل براز كامل + zoonotic culture", en: "Stool studies + culture"}
+    indication: {ar: "لو دم، حرارة، أو استمرار >٧٢ ساعة", en: "If bloody, febrile, or >72h"}
+    priority: routine
+  - name: {ar: "C. difficile toxin assay", en: "C. difficile toxin"}
+    indication: {ar: "لو بعد مضاد حيوي حديث", en: "If recent antibiotics"}
+    priority: routine
+
+when_to_escalate:
+  - {ar: "دم في البراز", en: "Blood in stool"}
+  - {ar: "علامات جفاف شديد (دوخة، قلة بول)", en: "Severe dehydration signs"}
+  - {ar: "حرارة فوق ٣٩", en: "Fever >39°C"}
+  - {ar: "ألم بطن شديد مستمر", en: "Severe persistent abdominal pain"}
+  - {ar: "إسهال استمرّ >٧ أيام", en: "Diarrhea persisting >7 days"}
+
+sources:
+  - https://cks.nice.org.uk/topics/gastroenteritis/
+  - https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease
+
+needs_clinical_review: true

@@ -1,0 +1,102 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: medagent
+      POSTGRES_PASSWORD: medagent
+      POSTGRES_DB: medagent
+    # Host port 5433 to avoid conflict with a local/Homebrew Postgres on 5432.
+    # Inside the docker network the port stays 5432 (used by the backend env override).
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medagent"]
+      interval: 3s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - backend/.env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://medagent:medagent@postgres:5432/medagent
+      REDIS_URL: redis://redis:6379/0
+      # SMTP_HOST / SMTP_PORT intentionally NOT set here — let backend/.env
+      # be the source of truth so we can switch between Mailpit (local) and
+      # Gmail (demos) without rebuilding. For offline dev, put these in .env:
+      #   SMTP_HOST=mailpit
+      #   SMTP_PORT=1025
+      ENV: local
+      # Default to localhost only. When exposing via a tunnel (ngrok,
+      # Cloudflare quick tunnel, …) override this with the public origin
+      # *via an .env file*, e.g.
+      #   CORS_ORIGINS=["http://localhost:3000","https://<your-tunnel>"]
+      # Quick-tunnel URLs are random per session and are session-scoped,
+      # so they don't belong in source control.
+      CORS_ORIGINS: '["http://localhost:3000","https://suggestion-glass-qui-teeth.trycloudflare.com"]'
+      LLM_PROVIDER: openai_compat
+      PHI_ENCRYPTION_ENABLED: "false"
+      DATA_ENCRYPTION_KEY: ""
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - ./backend/app:/app/backend/app
+      - ./scripts:/app/scripts
+      - ./data:/app/data
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # Default for local dev; override via a host env var when running
+      # behind a tunnel so the browser hits the public backend hostname:
+      #   NEXT_PUBLIC_API_URL=https://<your-backend-tunnel>/api/v1
+      NEXT_PUBLIC_API_URL: https://send-premium-coast-protecting.trycloudflare.com/api/v1
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/app:/app/frontend/app
+      - ./frontend/components:/app/frontend/components
+      - ./frontend/lib:/app/frontend/lib
+      - ./frontend/store:/app/frontend/store
+      - ./frontend/messages:/app/frontend/messages
+      - ./frontend/src:/app/frontend/src
+      - ./frontend/test:/app/frontend/test
+      - ./frontend/e2e:/app/frontend/e2e
+      - ./frontend/vitest.config.ts:/app/frontend/vitest.config.ts
+      - ./frontend/playwright.config.ts:/app/frontend/playwright.config.ts
+      - ./frontend/package.json:/app/frontend/package.json
+      - ./frontend/eslint.config.mjs:/app/frontend/eslint.config.mjs
+      # Next.js 16 renamed middleware.ts → proxy.ts. Mount it so edits
+      # take effect without rebuilding the image. Without this, edits
+      # to the proxy file are invisible to the running dev server.
+      - ./frontend/proxy.ts:/app/frontend/proxy.ts
+      # Mount next.config.ts so allowedDevOrigins edits (needed when behind
+      # a Cloudflare/ngrok tunnel) apply without rebuilding the image.
+      - ./frontend/next.config.ts:/app/frontend/next.config.ts
+
+volumes:
+  pgdata:

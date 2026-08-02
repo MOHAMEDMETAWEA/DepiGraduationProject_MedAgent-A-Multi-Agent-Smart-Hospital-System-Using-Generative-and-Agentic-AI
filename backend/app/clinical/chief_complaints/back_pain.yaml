@@ -1,0 +1,136 @@
+id: back_pain
+name: {ar: "ألم الظهر", en: "Back pain"}
+category: msk
+age_range: adult
+
+synonyms:
+  - back pain
+  - lower back pain
+  - lumbago
+  - sciatica
+  - ألم ظهر
+  - ألم في الظهر
+  - وجع ضهر
+  - عرق النسا
+  - ألم أسفل الظهر
+
+red_flags:
+  - question:
+      ar: هل في فقدان تحكم في التبول أو التبرّز؟ أو تنميل في منطقة السرج (ما بين الفخذين)؟
+      en: Loss of bladder/bowel control? Saddle anaesthesia (numbness between thighs)?
+    severity: emergency
+    rationale: Cauda equina syndrome — surgical emergency.
+  - question:
+      ar: هل في ضعف مفاجئ في الساقين أو صعوبة في المشي؟
+      en: Sudden leg weakness or difficulty walking?
+    severity: emergency
+    rationale: Cord compression / cauda equina.
+  - question:
+      ar: هل الألم جاي بعد ضربة قوية / سقوط / حادث؟
+      en: Pain after major trauma (fall, accident)?
+    severity: emergency
+    rationale: Vertebral fracture screen.
+  - question:
+      ar: هل عندك سرطان معروف، أو فقدان وزن غير مبرّر، أو حمى مستمرة مع الألم؟
+      en: Known cancer, unexplained weight loss, or fever with the pain?
+    severity: urgent
+    rationale: Metastasis / vertebral osteomyelitis / abscess.
+  - question:
+      ar: هل عمرك فوق ٥٠ وده أول ألم ظهر شديد، أو في تاريخ هشاشة عظام؟
+      en: Age >50 with new severe back pain, or known osteoporosis?
+    severity: urgent
+    rationale: Compression fracture risk.
+
+differentials:
+  - name: {ar: "ألم ميكانيكي / تشنّج عضلي", en: "Mechanical / muscular strain"}
+    likelihood: very_common
+    key_features:
+      - {ar: "بعد رفع شيء ثقيل أو وضعية سيئة", en: "After lifting or poor posture"}
+      - {ar: "يخف بالراحة", en: "Relieved by rest"}
+      - {ar: "لا ينتشر للساق", en: "No leg radiation"}
+    icd10: M54.5
+  - name: {ar: "عرق النسا (Sciatica)", en: "Sciatica / radiculopathy"}
+    likelihood: common
+    key_features:
+      - {ar: "ألم ينتشر من الظهر لأسفل الساق", en: "Pain radiating below the knee"}
+      - {ar: "تنميل أو ضعف في الساق", en: "Tingling / weakness"}
+      - {ar: "تسوء بالسعال أو العطس", en: "Worse with cough/sneeze"}
+    icd10: M54.3
+  - name: {ar: "انزلاق غضروفي", en: "Disc herniation"}
+    likelihood: common
+    key_features:
+      - {ar: "ألم حاد بعد حركة معينة", en: "Acute after specific movement"}
+      - {ar: "علامات عصبية في الساق", en: "Neurological signs in leg"}
+    icd10: M51
+  - name: {ar: "حصوة كلى (مع امتداد للظهر)", en: "Renal colic (referred)"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "ألم خاصرة متموج شديد", en: "Severe colicky flank pain"}
+      - {ar: "دم في البول", en: "Hematuria"}
+    icd10: N20
+  - name: {ar: "التهاب الفقار اللاصق", en: "Ankylosing spondylitis"}
+    likelihood: uncommon
+    key_features:
+      - {ar: "ألم ظهر صباحي يتحسّن بالحركة", en: "Morning stiffness improving with movement"}
+      - {ar: "شاب < ٤٠ سنة", en: "Young adult <40"}
+    icd10: M45
+
+followup_questions:
+  - field_id: onset
+    question: {ar: "امتى بدأ الألم؟ بعد حركة معينة؟", en: "When did it start? After a specific movement?"}
+    relevance: always
+  - field_id: radiation
+    question: {ar: "ينتشر لرجل واحدة أو الاتنين؟ لحد فين؟", en: "Radiates to which leg? Where exactly?"}
+    relevance: always
+  - field_id: numbness_weakness
+    question: {ar: "في تنميل أو ضعف في الرجل؟", en: "Any numbness or weakness in the leg?"}
+    relevance: always
+  - field_id: relief
+    question: {ar: "في وضع بيخفّف الألم؟", en: "Any position that relieves it?"}
+    relevance: if_no_red_flag
+
+self_care:
+  - drug_id: paracetamol
+    instruction:
+      ar: باراسيتامول ١٠٠٠ مج كل ٦ ساعات + بروفين ٤٠٠ مج كل ٨ ساعات مع الأكل — combination أفضل من كل دواء لوحده.
+      en: Paracetamol 1000 mg every 6h + ibuprofen 400 mg every 8h with food — combination better than either alone.
+    duration: 5 days max
+    contraindications:
+      - {ar: "لا بروفين لو في قرحة معدية أو فشل كلوي", en: "No ibuprofen if PUD or renal disease"}
+  - drug_id: ""
+    instruction:
+      ar: حركة خفيفة وتجنّب الراحة المطلقة في السرير (تؤخّر الشفاء). مشي قصير كل ساعة.
+      en: Stay active — bed rest delays recovery. Short walks every hour.
+    duration: 2 weeks
+  - drug_id: ""
+    instruction:
+      ar: كمادات دافئة على الظهر ٢٠ دقيقة كل ساعتين أول ٤٨ ساعة، ثم تبديل بكمادات باردة لو في تورّم.
+      en: Warm compress 20 min every 2h for first 48h, then cold if swollen.
+    duration: 5-7 days
+  - drug_id: ""
+    instruction:
+      ar: تجنّب رفع الأشياء الثقيلة + تحسين وضعية الجلوس والنوم + تمارين تقوية عضلات البطن والظهر بعد المرحلة الحادة.
+      en: Avoid heavy lifting, improve posture, core-strengthening exercises after acute phase.
+    duration: ongoing
+
+workup:
+  - name: {ar: "أشعة سينية على العمود الفقري", en: "Lumbar X-ray"}
+    indication: {ar: "لو سن >٥٠ أو ضربة", en: "Age >50 or trauma"}
+    priority: routine
+  - name: {ar: "أشعة رنين مغناطيسي MRI", en: "MRI lumbar spine"}
+    indication: {ar: "لو علامات عصبية أو شك في cauda equina", en: "Neurological signs or cauda equina concern"}
+    priority: emergent
+
+when_to_escalate:
+  - {ar: "فقدان تحكم في البول أو البراز", en: "Loss of bladder/bowel control"}
+  - {ar: "تنميل بين الفخذين أو حول الشرج", en: "Saddle numbness"}
+  - {ar: "ضعف في الرجلين", en: "Bilateral leg weakness"}
+  - {ar: "ألم لم يتحسّن بعد ٦ أسابيع", en: "No improvement after 6 weeks"}
+  - {ar: "حمى مستمرة مع الألم", en: "Persistent fever with the pain"}
+
+sources:
+  - https://cks.nice.org.uk/topics/back-pain-low-without-radiculopathy/
+  - https://cks.nice.org.uk/topics/sciatica-lumbar-radiculopathy/
+  - https://www.nice.org.uk/guidance/ng59
+
+needs_clinical_review: true

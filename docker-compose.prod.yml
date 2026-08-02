@@ -1,0 +1,97 @@
+# Phase F — F2: production-leaning compose.
+# Differences from docker-compose.yml (dev):
+#   - Uses Dockerfile.prod for backend + frontend (multi-stage, non-root).
+#   - Postgres data lives on a named volume; secrets via env files.
+#   - No source volume mounts — the image is the source of truth.
+#   - Healthchecks on every service so an orchestrator (Compose, Swarm, Nomad)
+#     can wait for readiness before flipping traffic.
+#   - Resource limits at the service level (Compose deploy.resources only
+#     applies under swarm; we use compose v3-compatible mem_limit / cpus).
+#
+# Usage:
+#   cp backend/.env.example backend/.env.prod      # fill REAL secrets
+#   docker compose -f docker-compose.prod.yml --env-file .env.prod up -d
+#
+# Behind a TLS reverse proxy (Caddy, Nginx, Traefik) — this file binds
+# 8000/3000 to localhost only so the proxy is the only public surface.
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set in env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in env}
+      POSTGRES_DB: ${POSTGRES_DB:?set in env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    mem_limit: 1g
+    # No published port — backend reaches postgres on the docker network only.
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    mem_limit: 256m
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.prod
+    restart: unless-stopped
+    env_file:
+      - backend/.env.prod
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379/0
+      ENV: production
+      UVICORN_WORKERS: ${UVICORN_WORKERS:-3}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8000:8000"  # reverse proxy terminates TLS in front
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/api/v1/health/live').status == 200 else 1)"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+      start_period: 30s
+    mem_limit: 2g
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.prod
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:?set in env}
+    depends_on:
+      - backend
+    ports:
+      - "127.0.0.1:3000:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+      start_period: 30s
+    mem_limit: 1g
+
+volumes:
+  pgdata:
+  redisdata:

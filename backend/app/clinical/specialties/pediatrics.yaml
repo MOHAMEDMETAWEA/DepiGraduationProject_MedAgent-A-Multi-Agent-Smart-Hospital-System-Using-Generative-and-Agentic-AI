@@ -1,0 +1,31 @@
+id: pediatrics
+name: {ar: "طب الأطفال", en: "Pediatrics"}
+description:
+  ar: تخصص الأطفال — صفر سنين إلى ١٨. كل دواء جرعة بالوزن.
+  en: Pediatric care — 0-18 years. Every drug is weight-based.
+
+fields:
+  - {id: age_months, label: {ar: "عمر الطفل (شهور لو أقل من سنتين)", en: "Child age (months if <2 yrs)"}, section: demographics, required: true, free_text: true}
+  - {id: weight_kg, label: {ar: "الوزن بالكيلو (مهم جدًا للجرعة)", en: "Weight in kg (critical for dosing)"}, section: demographics, required: true, free_text: true}
+  - {id: sex, label: {ar: "الجنس", en: "Sex"}, section: demographics, required: true, free_text: false}
+
+  - {id: chief_complaint, label: {ar: "الشكوى الرئيسية", en: "Chief complaint"}, section: chief_complaint, required: true, free_text: true}
+  - {id: onset, label: {ar: "بداية الأعراض", en: "Symptom onset"}, section: hpi, required: true, free_text: true}
+  - {id: feeding, label: {ar: "التغذية (رضاعة طبيعية / صناعية / طعام صلب)", en: "Feeding (breast / formula / solids)"}, section: hpi, required: true, free_text: true}
+  - {id: hydration, label: {ar: "علامات الجفاف (قلة دموع، حفاضة جافة >٦ ساعات)", en: "Dehydration signs (no tears, dry diaper >6 h)"}, section: hpi, required: true, free_text: true}
+  - {id: activity, label: {ar: "نشاط الطفل (طبيعي / خامل / غير مستجيب)", en: "Activity level (normal / lethargic / unresponsive)"}, section: hpi, required: true, free_text: true}
+  - {id: temp, label: {ar: "درجة الحرارة (مقاسة كيف؟)", en: "Temperature (how measured?)"}, section: vitals, required: true, free_text: true}
+  - {id: associated_symptoms, label: {ar: "أعراض مرافقة (طفح، قيء، إسهال، كحة)", en: "Associated (rash, vomit, diarrhea, cough)"}, section: hpi, required: true, free_text: true}
+
+  - {id: vaccinations, label: {ar: "التطعيمات (مكتملة لعمره؟)", en: "Vaccinations (up to date for age?)"}, section: pmh, required: true, free_text: true}
+  - {id: birth_history, label: {ar: "تاريخ الولادة (طبيعي/قيصري، حضّانة)", en: "Birth history (NSVD/CS, NICU)"}, section: pmh, required: false, free_text: true}
+  - {id: developmental, label: {ar: "نمو الطفل (متناسب مع العمر؟)", en: "Developmental milestones (age-appropriate?)"}, section: pmh, required: false, free_text: true}
+
+  - {id: current_meds, label: {ar: "أدوية حالية (اسم + جرعة)", en: "Current medications (name + dose)"}, section: meds, required: true, free_text: true}
+  - {id: allergies, label: {ar: "حساسية أدوية أو طعام", en: "Drug or food allergies"}, section: allergies, required: true, free_text: true}
+
+  - {id: home_smokers, label: {ar: "تدخين في المنزل؟", en: "Smokers at home?"}, section: social, required: false, free_text: true}
+  - {id: school_daycare, label: {ar: "حضانة/مدرسة + حالات مماثلة في المحيط؟", en: "Daycare/school + similar cases around?"}, section: social, required: false, free_text: true}
+
+required_red_flag_complaints:
+  - fever  # in <3 months always emergency

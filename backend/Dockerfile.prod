@@ -1,0 +1,64 @@
+# Phase F — F1: production backend image.
+# Multi-stage to keep the runtime image lean. Builder pulls deps, runtime ships
+# only the venv + source. The image runs as a non-root user with a writable
+# /tmp but a read-only application tree.
+
+# ── Builder ────────────────────────────────────────────────
+FROM python:3.12-slim AS builder
+
+WORKDIR /app
+
+# Build-essential + zlib for native extensions (blis, zlib-state, etc.).
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Copy lockfiles first so this layer caches across code edits.
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev
+
+# ── Runtime ────────────────────────────────────────────────
+FROM python:3.12-slim AS runtime
+
+# WeasyPrint native deps (Pango/Cairo) — required for PDF rendering. Plus
+# tini for proper PID 1 signal handling.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libpango-1.0-0 libpangoft2-1.0-0 \
+        libcairo2 libgdk-pixbuf2.0-0 \
+        libffi8 shared-mime-info \
+        tini \
+    && rm -rf /var/lib/apt/lists/*
+
+# Non-root user for the runtime.
+RUN groupadd -r medagent && useradd -r -g medagent -d /app -s /sbin/nologin medagent
+
+WORKDIR /app
+
+# Copy the resolved venv from the builder.
+COPY --from=builder /app/.venv /app/.venv
+ENV PATH="/app/.venv/bin:$PATH" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Copy app code last so source edits only re-bake the final layer.
+COPY backend/ ./backend/
+
+# Switch to non-root and lock down permissions.
+RUN chown -R medagent:medagent /app
+USER medagent
+
+WORKDIR /app/backend
+
+EXPOSE 8000
+
+# Use tini as PID 1 so SIGTERM cleanly propagates to uvicorn workers.
+ENTRYPOINT ["/usr/bin/tini", "--"]
+
+# No --reload in prod. The migration step is split out so the container can
+# fail fast if Alembic is unhappy. Workers default to 2 — tune via the
+# UVICORN_WORKERS env var at deploy time.
+CMD ["sh", "-c", "alembic upgrade head && exec uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers ${UVICORN_WORKERS:-2} --proxy-headers --forwarded-allow-ips=*"]
